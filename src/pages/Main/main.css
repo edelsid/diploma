@@ -1,0 +1,95 @@
+.block__about {
+  padding: 144px 0 115px 0;
+}
+
+.aboutText {
+  padding-left: 20px;
+  border-left: 8px solid #FFA800;
+}
+
+.text:nth-child(-n+2) {
+  margin-bottom: 28px;
+}
+
+.aboutImg {
+  height: 575px;
+  padding: 70px 0;
+  background-color: #FFA800;
+}
+
+.block__rules {
+  color: #FFFFFF;
+}
+
+.rules__header, .prosList, .feedbackList, .feedback__item, .form__row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.moreButton {
+  width: 325px;
+  height: 60px;
+}
+
+.prosList {
+  margin: 110px 0 0 0;
+  padding: 0 250px;
+}
+
+.list__item {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pro__item {
+  margin-bottom: 35px;
+  width: 162px;
+  height: 162px;
+  background-color: #ffffff20;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pro__item::after {
+  width: 136px;
+  height: 136px;
+}
+
+.pc::after {
+  content: url('../../assets/icons/pc.png');
+}
+
+.build::after {
+  content: url('../../assets/icons/build.png');
+}
+
+.web::after {
+  content: url('../../assets/icons/web.png');
+}
+
+.block__feedback {
+  padding: 160px 0 120px 0;
+}
+
+.feedbackList {
+  margin-top: 80px;
+}
+
+.feedback__item {
+  width: 45%;
+  align-items: center;
+}
+
+.portrait {
+  display: block;
+  margin-right: 50px;
+  flex-shrink: 0;
+  width: 206px;
+  height: 206px;
+  background-color: #292929;
+  border-radius: 50%;
+}

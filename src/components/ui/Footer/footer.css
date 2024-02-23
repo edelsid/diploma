@@ -1,0 +1,116 @@
+footer {
+  width: 100%;
+  background-color: #2D2B2F;
+  color: #E5E5E5;
+}
+
+.contactsWrapper {
+  border-bottom: 1px solid #E5E5E5;
+}
+
+.contacts {
+  padding: 50px 82px;
+  display: flex;
+  justify-content: space-between;
+  line-height: 2.7rem;
+}
+
+.contactPanel {
+  width: 346px;
+}
+
+.listItem::before {
+  vertical-align: -webkit-baseline-middle;;
+  padding-right: 36px;
+}
+
+.tel::before {
+  content: url('../../../assets/icons/phone.png');
+}
+
+.mail::before {
+  content: url('../../../assets/icons/mail.png');
+}
+
+.skype::before {
+  content: url('../../../assets/icons/skype.png');
+}
+
+.adress::before {
+  content: url('../../../assets/icons/place.png');
+}
+
+.subscribeForm {
+  margin-top: 23px;
+}
+
+.formInput {
+  display: flex;
+}
+
+.sbInput {
+  width: 447px;
+  height: 40px;
+  padding: 10px;
+}
+
+.sbButton {
+  margin-left: 33px;
+  width: 170px;
+  text-transform: uppercase;
+}
+
+.transparent {
+  background-color: #29292900;
+  border: 1px solid #FFFFFF;
+  color: #FFFFFF;
+}
+
+.iconList {
+  margin-top: 44px;
+}
+
+.sbList {
+  display: flex;
+  gap: 55px;
+}
+
+.yt {
+  content: url('../../../assets/icons/yt.png');
+}
+
+.in {
+  content: url('../../../assets/icons/in.png');
+}
+
+.google {
+  content: url('../../../assets/icons/google.png');
+}
+
+.fb {
+  content: url('../../../assets/icons/fb.png');
+}
+
+.tw {
+  content: url('../../../assets/icons/tw.png');
+}
+
+.footerPanel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toTop {
+  border: 1px solid #E5E5E5;
+  border-radius: 50%;
+  height: 36px;
+  width: 36px;
+  cursor: pointer;
+}
+
+.toTop::after {
+  content: url('../../../assets/icons/arrow.png');
+  display: block;
+  text-align: center;
+}

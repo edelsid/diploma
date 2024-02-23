@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&subset=cyrillic-ext');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&subset=cyrillic-ext');
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto";
+  font-size: 24px;
+}
+
+section {
+  margin: 0 258px;
+}
+
+h1, h3, h4, p {
+  margin: 0;
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 36px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+h3 {
+  font-size: 30px;
+}
+
+h4 {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+button {
+  font-family: 'Roboto';
+  font-size: 24px;
+}
+
+input {
+  font-size: 24px;
+}
+
+a {
+  text-decoration: none;
+}
+
+::-webkit-input-placeholder {
+  color: #E5E5E5;
+}
+
+.center {
+  text-align: center;
+}
+
+.background, .portrait {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.logo {
+  font-size: 36px;
+  font-weight: 900;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.thin {
+  font-weight: 100;
+}
+
+.faint {
+  font-size: 18px;
+  color: #928F94;
+  font-style: italic;
+}
+
+.citation {
+  position: relative;
+}
+
+.citation::before, .citation::after {
+  font-size: 48px;
+  color: #7a7a7a;
+  line-height: 1px;
+  position: absolute;
+}
+
+.citation::before {
+  top: 20px;
+  left: -30px;
+  content: "\201C";
+}
+
+.citation::after {
+  content: "\201D";
+  bottom: -10px;
+}
+
+.indicators {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 135px;
+}
+
+.indicator {
+  height: 19px;
+  width: 19px;
+  background-color: #E5E5E5;
+  border: 0;
+  border-radius: 50%;
+}
