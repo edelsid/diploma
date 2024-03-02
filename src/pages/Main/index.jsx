@@ -6,9 +6,9 @@ import "./main.css"
 export default function Main() {
   return (
     <>
-      <About></About>
-      <Rules></Rules>
-      <Feedback></Feedback>
+      <About />
+      <Rules />
+      <Feedback />
     </>
   )
 }

@@ -1,0 +1,156 @@
+.parameters {
+  color: #E5E5E5;
+  background-color: #3e3c41;
+}
+
+.parameters__path {
+  padding-top: 50px;
+}
+
+.parameters__service {
+  padding-left: 60px;
+}
+
+.parameters__price {
+  padding: 45px;
+}
+
+.parameters__way {
+  padding: 30px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.input__side {
+  width: calc(100% - 20px);
+  margin-bottom: 32px;
+}
+
+.service {
+  align-items: center;
+}
+
+.service:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.name::before {
+  content: '+';
+  margin-right: 35px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 75px;
+  height: 20px;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ffffff;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 28px;
+  width: 28px;
+  bottom: -4px;
+  background-color: #c4c4c4;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #fcdc9d;
+}
+
+input:checked + .slider:before {
+  transform: translateX(48px);
+  background-color: #FFA800;
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* The slider itself */
+.slider__large {
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 25px; /* Specified height */
+  background-color: #3e3c41; 
+  border: 1px solid white;
+  outline: none; /* Remove outline */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+  height: 15px;
+  border-radius: 10px; 
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider__large::-webkit-slider-thumb {
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background-color: #FFA800;
+  cursor: pointer; /* Cursor on hover */
+  height: 25px;
+  border-radius: 50%;
+}
+
+.range {
+  font-size: 14px;
+}
+
+.wayBtn {
+  border: 0;
+  background-color: #FFA800;
+  border-radius: 8px;
+  height: 35px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.wayWrapper, .nameWrapper {
+  align-items: center;
+}
+
+.nameWrapper {
+  gap: 10px;
+}
+
+.way {
+  margin: 0;
+}
+
+.openBtn {
+  width: 20px;
+  height: 20px;
+  font-size: 14px;
+  padding: 0;
+  color: #E5E5E5;
+  background-color: #3e3c41;
+  border: 1px solid #E5E5E5;
+  border-radius: 5px;
+}

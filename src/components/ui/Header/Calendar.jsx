@@ -1,44 +1,47 @@
+import { endOfMonth, startOfMonth, differenceInDays, subMonths, addMonths, format, getDate, setDate } from "date-fns";
+import { ru } from "date-fns/locale";
+import { useSelector } from "react-redux";
+import { useState } from "react";
 import Cell from "../../items/Cell";
 
-export default function Calendar() {
+export default function Calendar({ showDate, name }) {
+  const date = useSelector(state => state.site.date);
+  const [currentDate, setCurrentDate] = useState(date);
+  const [chosenDay, setChosenDay] = useState(getDate(currentDate));
+  
+  const start = startOfMonth(currentDate);
+  const end = endOfMonth(currentDate);
+  const prevMonth = () => setCurrentDate(subMonths(currentDate, 1)); 
+  const nextMonth = () => setCurrentDate(addMonths(currentDate, 1));
+  const fullMonth = differenceInDays(end, start) + 1;
+  let dayOfTheWeek = start.getDay() - 1;
+  if (dayOfTheWeek === -1) dayOfTheWeek = 6;
+  const daysAfterEnd = 7 - end.getDay();
+
+  const callback = (day) => {
+    const newDate = setDate(currentDate, day);
+    setCurrentDate(newDate);
+    setChosenDay(day);
+    showDate(format(newDate, 'dd.LL.yyyy'), name);
+  }
+
   return (
     <div className="calendarWrapper">
       <div className="calendarArrow"></div>
       <div className="calendar">
-        <p className="calendarHeader">Month</p>
+        <p>{format(currentDate, 'dd.LL.yyyy', {locale: ru})}</p>
+        <div className="calendarHeader">
+          <p onClick={prevMonth}>{'<'}</p>
+          {format(currentDate, 'LLLL', {locale: ru})}
+          <p onClick={nextMonth}>{'>'}</p>
+        </div>
         <div className="calendarGrid">
-          {/* {month.map((item) => <Cell prop={item}></Cell>)} */}
-          <Cell>1</Cell>
-          <Cell>2</Cell>
-          <Cell>3</Cell>
-          <Cell>4</Cell>
-          <Cell>5</Cell>
-          <Cell>6</Cell>
-          <Cell>7</Cell>
-          <Cell>8</Cell>
-          <Cell>9</Cell>
-          <Cell>10</Cell>
-          <Cell>11</Cell>
-          <Cell>12</Cell>
-          <Cell>13</Cell>
-          <Cell>14</Cell>
-          <Cell>15</Cell>
-          <Cell>16</Cell>
-          <Cell>17</Cell>
-          <Cell>18</Cell>
-          <Cell>19</Cell>
-          <Cell>20</Cell>
-          <Cell>21</Cell>
-          <Cell>22</Cell>
-          <Cell>23</Cell>
-          <Cell>24</Cell>
-          <Cell>25</Cell>
-          <Cell>26</Cell>
-          <Cell>27</Cell>
-          <Cell>28</Cell>
-          <Cell>29</Cell>
-          <Cell>30</Cell>
-          <Cell>31</Cell>
+          {Array.from({length:dayOfTheWeek}).map((_, day) => <Cell key={day} />)}
+          {Array.from({length:fullMonth}).map((_, day) => {
+            const correctDay = day + 1;
+            return <Cell key={correctDay} active={chosenDay === correctDay} prop={correctDay} callback={callback}/>
+          })}
+          {daysAfterEnd !== 7 && Array.from({length:daysAfterEnd}).map((_, day) => <Cell key={day}/>)}
         </div>
       </div>
     </div>

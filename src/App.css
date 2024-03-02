@@ -53,6 +53,16 @@ a {
   text-decoration: none;
 }
 
+select {
+  border: 1px solid white;
+  outline: none;
+  padding: 3px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: 16px;
+}
+
 ::-webkit-input-placeholder {
   color: #E5E5E5;
 }
@@ -74,8 +84,40 @@ a {
   margin-bottom: 15px;
 }
 
+.auto {
+  color: black;
+}
+
+.small {
+  font-size: 16px;
+}
+
+.smaller {
+  font-size: 14px;
+}
+
+.grey {
+  color: #928f94;
+}
+
 .thin {
   font-weight: 100;
+}
+
+.big {
+  font-size: 22px;
+}
+
+.normal {
+  font-weight: 400;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.orange {
+  color: #FFA800;
 }
 
 .faint {

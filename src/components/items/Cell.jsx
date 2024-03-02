@@ -1,11 +1,9 @@
-import { string } from "prop-types"
+export default function Cell({ prop, active, callback }) {
+  const chooseDay = () => {
+    callback(prop);
+  }
 
-export default function Cell({ children }) {
   return (
-    <div className="cell">{ children }</div>
+    <div className={`cell ${active ? 'active' : ''}`} onClick={chooseDay}>{prop}</div>
   )
 }
-
-Cell.propTypes = {
-  children: string,
-};

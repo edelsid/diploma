@@ -5,6 +5,7 @@ import evg from '../assets/photos/evg.png';
 const site = createSlice({
   name: 'siteData',
   initialState: {
+    date: Date.now(),
     socials: ['yt', 'in', 'google', 'fb', 'tw'],
     menu: [
       {
