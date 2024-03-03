@@ -89,6 +89,11 @@ header {
   gap: 35px;
 }
 
+.row__second {
+  position: relative;
+  z-index: 0;
+}
+
 .inputWrapper {
   position: relative;
 }
@@ -176,11 +181,12 @@ header {
   color: #000000;
   border-radius: 3px;
   top: 70px;
+  z-index: 1;
 }
 
 .progressBar {
   position: relative;
-  z-index: 0;
+  z-index: -1;
   height: 100px;
   background-color: #3e3c41;
   color: #FFFFFF;

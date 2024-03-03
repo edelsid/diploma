@@ -37,9 +37,15 @@
   margin-bottom: 20px;
 }
 
+.name {
+  font-size: 18px;
+}
+
 .name::before {
-  content: '+';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: bold;
   margin-right: 35px;
+  vertical-align: middle;
 }
 
 .switch {
@@ -85,7 +91,6 @@ input:checked + .slider:before {
   background-color: #FFA800;
 }
 
-/* Rounded sliders */
 .slider.round {
   border-radius: 34px;
 }
@@ -97,11 +102,11 @@ input:checked + .slider:before {
 /* The slider itself */
 .slider__large {
   appearance: none;
-  width: 100%; /* Full-width */
-  height: 25px; /* Specified height */
+  width: 100%;
+  height: 25px;
   background-color: #3e3c41; 
   border: 1px solid white;
-  outline: none; /* Remove outline */
+  outline: none;
   -webkit-transition: .2s; /* 0.2 seconds transition on hover */
   transition: opacity .2s;
   height: 15px;
@@ -111,10 +116,10 @@ input:checked + .slider:before {
 /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
 .slider__large::-webkit-slider-thumb {
   appearance: none;
-  width: 25px; /* Set a specific slider handle width */
-  height: 25px; /* Slider handle height */
+  width: 25px;
+  height: 25px;
   background-color: #FFA800;
-  cursor: pointer; /* Cursor on hover */
+  cursor: pointer;
   height: 25px;
   border-radius: 50%;
 }
@@ -127,7 +132,7 @@ input:checked + .slider:before {
   border: 0;
   background-color: #FFA800;
   border-radius: 8px;
-  height: 35px;
+  height: 30px;
   font-weight: bold;
   font-size: 18px;
 }
@@ -153,4 +158,18 @@ input:checked + .slider:before {
   background-color: #3e3c41;
   border: 1px solid #E5E5E5;
   border-radius: 5px;
+}
+
+.latestTickets {
+  margin-top: 100px;
+}
+
+.ticket {
+  padding: 18px;
+  border: 1px solid #c4c4c4;
+  margin-bottom: 20px;
+}
+
+.pathways {
+  margin-bottom: 40px;
 }

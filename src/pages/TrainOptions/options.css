@@ -15,35 +15,12 @@ aside {
   margin-top: 95px;
 }
 
-.latestTickets {
-  margin-top: 100px;
-}
-
 .title {
   text-transform: uppercase;
 }
 
-.ticket {
-  padding: 18px;
-  border: 1px solid #c4c4c4;
-  margin-bottom: 20px;
-}
-
-.pathways {
-  margin-bottom: 40px;
-}
-
-.city {
-  font-size: 16px;
-}
-
 .pathway__from {
   text-align: end;
-}
-
-.serviceList {
-  display: flex;
-  color: #c4c4c4;
 }
 
 .price {
@@ -95,7 +72,7 @@ aside {
 }
 
 .train__icon::after {
-  content: '+';
+  content: url(../../assets/icons/train.png);
 }
 
 .train__number {
@@ -115,7 +92,6 @@ aside {
 .direction {
   display: grid;
   grid-template-columns: 115px auto 115px;
-
   gap: 35px;
   margin: 52px 0 67px 0;
 }
@@ -133,6 +109,7 @@ aside, .additional, .vagonTypes {
 .vagonTypes {
   flex-shrink: 0;
   padding: 41px 27px 0 27px;
+  justify-content: space-between;
 }
 
 .vagon__desc, .price__vagon {

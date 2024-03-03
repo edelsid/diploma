@@ -100,6 +100,10 @@ select {
   color: #928f94;
 }
 
+.capital {
+  text-transform: capitalize;
+}
+
 .thin {
   font-weight: 100;
 }
@@ -161,4 +165,41 @@ select {
   background-color: #E5E5E5;
   border: 0;
   border-radius: 50%;
+}
+
+.serviceList {
+  display: flex;
+  color: #c4c4c4;
+}
+
+.icon::before {
+  margin-left: 10px;
+}
+
+.air_cond::before {
+  content: url('./assets/icons/air.png')
+}
+
+.wifi::before {
+  content: url('./assets/icons/wifi.png')
+}
+
+.express::before {
+  content: url('./assets/icons/express.png')
+}
+
+.frst_class::before {
+  content: url('./assets/icons/first.png');
+}
+
+.sec_class::before {
+  content: url('./assets/icons/sec.png');
+}
+
+.trd_class::before {
+  content: url('./assets/icons/third.png');
+}
+
+.frth_class::before {
+  content: url('./assets/icons/sit.png');
 }

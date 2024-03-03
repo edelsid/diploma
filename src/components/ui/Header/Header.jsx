@@ -1,13 +1,25 @@
 import IntroImg from "./IntroImg"
 import ProgressBar from "./ProgressBar";
-import "./header.css"
 import { HeaderForm } from "./HeaderForm";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom"
+import "./header.css"
 
 export default function Header() {
   const menu = useSelector(state => state.site.menu);
   const location = useLocation();
+  const locTable = {
+    1: '/routes',
+    2: '/seats',
+    3: '/payment',
+    4: '/confirm',
+  };
+  let currentPhase;
+  Object.entries(locTable).forEach(([key, value]) => {
+    if (value === location.pathname) {
+      currentPhase = Number(key);
+    }
+  });
 
   return (
     <header>
@@ -25,7 +37,7 @@ export default function Header() {
           <HeaderForm loc={location.pathname} />
         </section>
       </IntroImg>
-      {location.pathname !== '/' && <ProgressBar />}
+      {location.pathname !== '/' && <ProgressBar phase={currentPhase}/>}
     </header>
   )
 }

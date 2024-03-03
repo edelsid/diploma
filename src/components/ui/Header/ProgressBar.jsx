@@ -1,9 +1,7 @@
 import ProgressCell from '../../items/ProgressCell'
-import { useState } from 'react'
 
-export default function ProgressBar() {
+export default function ProgressBar({ phase }) {
   const menu = ['Билеты', 'Пассажиры', 'Оплата', 'Проверка'];
-  const [phase, setPhase] = useState(1);
 
   return (
     <div className='progressBar'>

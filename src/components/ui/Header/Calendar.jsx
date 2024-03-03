@@ -22,14 +22,13 @@ export default function Calendar({ showDate, name }) {
     const newDate = setDate(currentDate, day);
     setCurrentDate(newDate);
     setChosenDay(day);
-    showDate(format(newDate, 'dd.LL.yyyy'), name);
+    showDate(format(newDate, 'dd.LL.yyyy'), name, format(newDate, 'yyyy-LL-dd'));
   }
 
   return (
     <div className="calendarWrapper">
       <div className="calendarArrow"></div>
       <div className="calendar">
-        <p>{format(currentDate, 'dd.LL.yyyy', {locale: ru})}</p>
         <div className="calendarHeader">
           <p onClick={prevMonth}>{'<'}</p>
           {format(currentDate, 'LLLL', {locale: ru})}
@@ -37,10 +36,12 @@ export default function Calendar({ showDate, name }) {
         </div>
         <div className="calendarGrid">
           {Array.from({length:dayOfTheWeek}).map((_, day) => <Cell key={day} />)}
+
           {Array.from({length:fullMonth}).map((_, day) => {
             const correctDay = day + 1;
             return <Cell key={correctDay} active={chosenDay === correctDay} prop={correctDay} callback={callback}/>
           })}
+
           {daysAfterEnd !== 7 && Array.from({length:daysAfterEnd}).map((_, day) => <Cell key={day}/>)}
         </div>
       </div>

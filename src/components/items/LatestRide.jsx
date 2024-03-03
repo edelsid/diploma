@@ -6,17 +6,17 @@ export default function LatestRide({ item }) {
     <li className="ticket">
       <div className="pathways">
         <div className="pathway pathway__to">
-          <p className="city">{from.city}</p>
+          <p className="small">{from.city}</p>
           <p className="small grey">{from.station}</p>
         </div>
         <div className="pathway pathway__from">
-          <p className="city">{back.city}</p>
+          <p className="small">{back.city}</p>
           <p className="small grey">{back.station}</p>
         </div>
         </div>
         <div className="information">
         <List className="serviceList">
-          {services.map((item) => <li className="icon" key={services.indexOf(item)}>{item}</li>)}
+          {services.map((item) => <li className={`icon ${item.name}`} key={services.indexOf(item)}></li>)}
         </List>
         <div className="price">
           <p>от</p>

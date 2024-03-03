@@ -1,9 +1,9 @@
-export default function OffersHeader() {
+export default function OffersHeader({ count }) {
   const filters = [5, 10, 20];
 
   return (
     <div className="offers__header">
-      <p className="small grey">найдено 20</p>
+      <p className="small grey">найдено {count}</p>
       <div className="filters">
         <label className="select__time small grey">сортировать по:
           <select>

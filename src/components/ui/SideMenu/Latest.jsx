@@ -1,5 +1,5 @@
-import List from "../../models/List"
-import LatestRide from "../../components/items/LatestRide"
+import List from "../../../models/List"
+import LatestRide from "../../items/LatestRide"
 
 export default function Latest() {
   const latestTickets = [{
@@ -11,7 +11,16 @@ export default function Latest() {
       city: 'Самара',
       station: 'Московский вокзал',
     },
-    services: ['1', '2', '3'],
+    services: [{
+      name: "wifi",
+      status: true,
+    }, {
+      name: "express",
+      status: true,
+    }, {
+      name: "air_cond",
+      status: true,
+    }],
     price: '2 500',
   }];
 
