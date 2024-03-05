@@ -93,3 +93,15 @@
   background-color: #292929;
   border-radius: 50%;
 }
+
+.temporary {
+  padding: 0 50px;
+  display: flex;
+  gap: 10px;
+}
+
+.link {
+  display: block;
+  width: max-content;
+  background-color: #FFA800;
+}
