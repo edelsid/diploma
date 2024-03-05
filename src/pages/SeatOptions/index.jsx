@@ -10,7 +10,7 @@ export default function SeatOptions() {
         <SideMenu />
         <Latest />
       </div>
-      <div className="column">
+      <div className="column offers">
         <SeatChoice />
       </div>
     </section>

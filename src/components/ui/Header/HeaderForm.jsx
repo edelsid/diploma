@@ -1,3 +1,4 @@
+import { string } from "prop-types"
 import { useState } from "react"
 import { useFetch } from "../../../hooks/useFetch";
 import { useNavigate, createSearchParams } from "react-router-dom";
@@ -35,8 +36,8 @@ export function HeaderForm({ loc }) {
           setCalendarTo(false);
         }
         break;
-      };
-    };
+      }
+    }
   };
 
   const changeInput = (e) => {
@@ -94,7 +95,7 @@ export function HeaderForm({ loc }) {
                 onFocus={() => setFocus(true)}>
               </input>
               {focus && inputFrom.name && cities.data.length > 0 && <div className="cityOptions">
-                {cities.data.map((city) => <p className="capital" key={city.id} onClick={() => fillFromList(city, "from")}>{city.name}</p>)}
+                {cities.data.map((city) => <p className="capital" key={city._id} onClick={() => fillFromList(city, "from")}>{city.name}</p>)}
               </div>}
             </div>
             <span className="icon change"></span>
@@ -108,7 +109,7 @@ export function HeaderForm({ loc }) {
                 onFocus={() => setFocus(true)}>
               </input>
               {focus && inputTo.name && cities.data.length > 0 && <div className="cityOptions">
-                {cities.data.map((city) => <p className="capital" key={city.id} onClick={() => fillFromList(city, "to")}>{city.name}</p>)}
+                {cities.data.map((city) => <p className="capital" key={city._id} onClick={() => fillFromList(city, "to")}>{city.name}</p>)}
               </div>}
             </div>
           </div>
@@ -144,4 +145,8 @@ export function HeaderForm({ loc }) {
       <button type="submit" className="form__submit">Найти билеты</button>
     </form>
   )
+}
+
+HeaderForm.propTypes = {
+  loc: string,
 }

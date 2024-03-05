@@ -1,3 +1,4 @@
+import { object } from "prop-types";
 import List from "../../models/List";
 
 export default function LatestRide({ item }) {
@@ -26,4 +27,8 @@ export default function LatestRide({ item }) {
       </div>
     </li>
   )
+}
+
+LatestRide.propTypes = {
+  item: object,
 }

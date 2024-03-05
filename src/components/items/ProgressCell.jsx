@@ -1,3 +1,4 @@
+import { string, number } from "prop-types";
 import { useState, useEffect } from "react";
 
 export default function ProgressCell({ item, phase, count, length }) {
@@ -23,4 +24,11 @@ export default function ProgressCell({ item, phase, count, length }) {
       </div>}
     </div>
   )
+}
+
+ProgressCell.propTypes = {
+  item: string,
+  phase: number,
+  count: number,
+  length: number,
 }

@@ -1,3 +1,5 @@
+import { object } from "prop-types";
+
 export default function VagonType({ item, prices }) {
   let price;
   let name;
@@ -26,4 +28,9 @@ export default function VagonType({ item, prices }) {
       </div>
     </li>
   )
+}
+
+VagonType.propTypes = {
+  item: object,
+  prices: object,
 }

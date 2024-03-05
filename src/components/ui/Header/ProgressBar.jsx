@@ -1,3 +1,4 @@
+import { number } from "prop-types"
 import ProgressCell from '../../items/ProgressCell'
 
 export default function ProgressBar({ phase }) {
@@ -12,4 +13,8 @@ export default function ProgressBar({ phase }) {
       </div>
     </div>
   )
+}
+
+ProgressBar.propTypes = {
+  phase: number,
 }

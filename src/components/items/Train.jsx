@@ -1,10 +1,10 @@
 import Direction from "../../pages/TrainOptions/Direction";
 import List from "../../models/List";
 import VagonType from "./VagonType";
+import { object } from "prop-types";
 
 export default function Train({ item }) {
-  const {arrival, available_seats, available_seats_info, departure, have_air_conditioning, have_first_class, have_fourth_class,
-  have_second_class, have_third_class, have_wifi, is_express, min_price} = item;
+  const {arrival, departure, have_air_conditioning, have_wifi, is_express } = item;
   const services = [
     {
       name: "wifi",
@@ -46,4 +46,8 @@ export default function Train({ item }) {
       </div>
     </li>
   )
+}
+
+Train.propTypes = {
+  item: object,
 }

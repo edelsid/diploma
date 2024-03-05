@@ -1,3 +1,5 @@
+import { object } from "prop-types";
+
 export default function Destination({ item }) {
   const {city, railway_station_name, datetime} = item;
   const date = new Date(datetime);
@@ -11,4 +13,8 @@ export default function Destination({ item }) {
       <p className="smaller grey">{railway_station_name + ' вокзал'}</p>
     </div>
   )
+}
+
+Destination.propTypes = {
+  item: object,
 }

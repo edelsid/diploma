@@ -1,3 +1,5 @@
+import { number } from "prop-types";
+
 export default function OffersHeader({ count }) {
   const filters = [5, 10, 20];
 
@@ -18,4 +20,8 @@ export default function OffersHeader({ count }) {
       </div>
     </div>
   )
+}
+
+OffersHeader.propTypes = {
+  count: number,
 }

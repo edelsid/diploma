@@ -3,6 +3,7 @@ import { ru } from "date-fns/locale";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import Cell from "../../items/Cell";
+import { func, string } from "prop-types";
 
 export default function Calendar({ showDate, name }) {
   const date = useSelector(state => state.site.date);
@@ -47,4 +48,9 @@ export default function Calendar({ showDate, name }) {
       </div>
     </div>
   )
+}
+
+Calendar.propTypes = {
+  name: string,
+  showDate: func,
 }

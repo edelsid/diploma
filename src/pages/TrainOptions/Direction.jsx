@@ -1,3 +1,4 @@
+import { number, object, string } from "prop-types";
 import Destination from "../../components/items/Destination"
 
 export default function Direction({ arrow, to, back, fullTime }) {
@@ -15,4 +16,11 @@ export default function Direction({ arrow, to, back, fullTime }) {
       <Destination item={back}/>
     </div>
   )
+}
+
+Direction.propTypes = {
+  arrow: string,
+  to: object,
+  back: object,
+  fullTime: number,
 }

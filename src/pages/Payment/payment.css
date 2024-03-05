@@ -1,0 +1,11 @@
+.payment__form, .cash {
+  padding: 35px;
+}
+
+.payment__form {
+  height: 235px;
+}
+
+.cash {
+  height: 165px;
+}

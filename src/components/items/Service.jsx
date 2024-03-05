@@ -1,3 +1,5 @@
+import { object } from "prop-types"
+
 export default function Service({ item }) {
   return (
     <li className="service vagon">
@@ -8,4 +10,8 @@ export default function Service({ item }) {
       </label>
     </li>
   )
+}
+
+Service.propTypes = {
+  item: object,
 }

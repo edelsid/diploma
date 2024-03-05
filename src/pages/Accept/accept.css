@@ -1,0 +1,22 @@
+.train__final {
+  border: 1px solid #c4c4c4;
+  height: 355px;
+  background-color: #e4e0e9;
+}
+
+.passenger__overview {
+  display: flex;
+  justify-content: space-between;
+  padding: 35px;
+}
+
+.changeback {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.totalsum {
+  margin-bottom: 10px;
+}

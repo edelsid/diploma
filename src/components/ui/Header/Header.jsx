@@ -8,17 +8,26 @@ import "./header.css"
 export default function Header() {
   const menu = useSelector(state => state.site.menu);
   const location = useLocation();
-  const locTable = {
-    1: '/routes',
-    2: '/seats',
-    3: '/payment',
-    4: '/confirm',
-  };
+  const locTable = [{
+    count: 1,
+    loc: '/routes',
+  }, {
+    count: 1,
+    loc: '/seats',
+  }, {
+    count: 2,
+    loc: '/passengers',
+  }, {
+    count: 3,
+    loc: '/payment',
+  }, {
+    count: 4,
+    loc: '/accept',
+  }];
+
   let currentPhase;
-  Object.entries(locTable).forEach(([key, value]) => {
-    if (value === location.pathname) {
-      currentPhase = Number(key);
-    }
+  locTable.forEach((item) => {
+    if (item.loc === location.pathname) currentPhase = item.count;
   });
 
   return (
@@ -33,11 +42,11 @@ export default function Header() {
           </div>
         </div>
         <section className="block block__intro">
-          {location.pathname === '/' && <h1 className="slogan"><p className="thin">Вся жизнь - </p>путешествие!</h1>}              
-          <HeaderForm loc={location.pathname} />
+          {location.pathname === '/' && <h1 className="slogan"><p className="thin">Вся жизнь - </p>путешествие!</h1>}
+          {location.pathname !== '/confirm' && <HeaderForm loc={location.pathname} />}
         </section>
       </IntroImg>
-      {location.pathname !== '/' && <ProgressBar phase={currentPhase}/>}
+      {location.pathname !== '/' && location.pathname !== '/confirm' && <ProgressBar phase={currentPhase}/>}
     </header>
   )
 }

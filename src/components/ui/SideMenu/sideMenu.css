@@ -3,6 +3,20 @@
   background-color: #3e3c41;
 }
 
+.parameters__header, .parameters__total {
+  padding: 40px;
+}
+
+.parameters__info {
+  padding-top: 22px;
+  padding-bottom: 65px;
+}
+
+.parameters__passengers {
+  padding-top: 20px;
+  padding-bottom: 50px;
+}
+
 .parameters__path {
   padding-top: 50px;
 }
@@ -99,6 +113,10 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
+.opened {
+  margin-top: 30px;
+}
+
 /* The slider itself */
 .slider__large {
   appearance: none;
@@ -137,11 +155,12 @@ input:checked + .slider:before {
   font-size: 18px;
 }
 
-.wayWrapper, .nameWrapper {
+.wayWrapper {
   align-items: center;
 }
 
 .nameWrapper {
+  align-items: baseline;
   gap: 10px;
 }
 
@@ -160,6 +179,11 @@ input:checked + .slider:before {
   border-radius: 5px;
 }
 
+.way__desc {
+  margin-top: 55px;
+  text-align: center;
+}
+
 .latestTickets {
   margin-top: 100px;
 }
@@ -172,4 +196,28 @@ input:checked + .slider:before {
 
 .pathways {
   margin-bottom: 40px;
+}
+
+.passenger__desc {
+  margin: 20px 0 0 0;
+}
+
+.passengers, .total__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.passengers {
+  
+  margin-top: 20px;
+}
+
+.passenger__type {
+  display: flex;
+  gap: 5px;
+}
+
+.price > h4, .price > h2 {
+  margin-bottom: 0;
 }

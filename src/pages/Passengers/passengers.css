@@ -1,0 +1,71 @@
+.offers__passengers {
+  margin: 0;
+}
+
+.psg {
+  margin-bottom: 45px;
+}
+
+.passenger__form, .passport__form, .next__passenger, .add__passenger {
+  padding: 35px;
+}
+
+.passenger__panel {
+  box-sizing: border-box;
+  padding: 35px 20px;
+}
+
+.passenger__panel__header, .button__round {
+  display: flex;
+}
+
+.passenger__panel__header > h4 {
+  margin: 0;
+}
+
+.button__round {
+  background-color: #ffffff00;
+  border: 1px solid #c4c4c4;
+  color: #c4c4c4;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+}
+
+.passenger__form {
+  height: 450px;
+}
+
+.passport__form {
+  height: 155px;
+  padding-top: 40px;
+}
+
+.next__passenger {
+  height: 120px;
+  display: flex;
+  justify-content: end;
+  align-items: end;
+}
+
+.border__btm {
+  border-bottom: 1px dotted #c4c4c4;
+}
+
+.next__passanger__button {
+  background-color: #ffffff00;
+  padding: 15px 25px;
+}
+
+.add__passenger__btn {
+  color: #FFA800;
+  border: 0;
+  background-color: #ffffff00;
+}
+
+.add__passenger > .passenger__panel__header {
+  justify-content: space-between;
+}

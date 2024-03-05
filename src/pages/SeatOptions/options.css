@@ -1,0 +1,67 @@
+.seats__header {
+  margin-bottom: 60px;
+}
+
+.seats__panel__header, .type__list {
+  display: flex;
+}
+
+.seats__panel {
+  padding: 35px 20px;
+}
+
+.seats__panel__header {
+  height: 60px;
+  margin-bottom: 55px;
+}
+
+.sign {
+  background-color: #FFA800;
+  padding: 0 20px;
+  color: #ffffff;
+  border-radius: 3px;
+  border: 0;
+}
+
+.back__button {
+  margin-left: 10px;
+  background-color: #ffffff00;
+  padding: 0 35px;
+}
+
+.train__desc {
+  margin-bottom: 70px;
+}
+
+.type__list {
+  margin-top: 25px;
+  justify-content: space-between;
+}
+
+.seat__type {
+  height: 155px;
+  padding: 20px 17px;
+  text-align: center;
+}
+
+.border {
+  height: 50px;
+  border-top: 1px solid #c4c4c4;
+  border-bottom: 1px dotted #c4c4c4;
+  margin-bottom: 35px;
+}
+
+.type__icon {
+  display: block;
+  margin-bottom: 22px;
+}
+
+.btn__wrapper {
+  display: flex;
+  justify-content: end;
+  margin: 100px 0 125px 0;
+}
+
+.seat {
+  margin-bottom: 25px;
+}
