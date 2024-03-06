@@ -15,7 +15,8 @@ export function HeaderForm({ loc }) {
   const [inputTo, setInputTo] = useState({id: "", name: ""});
   const [departDate, setDepartDate] = useState({date: "", codedDate: ""});
   const [arriveDate, setArriveDate] = useState({date: "", codedDate: ""});
-  const [focus, setFocus] = useState(false);
+  const [focusFrom, setFocusFrom] = useState(false);
+  const [focusTo, setFocusTo] = useState(false);
 
   const showCalendar = (e) => {
     e.preventDefault();
@@ -50,12 +51,18 @@ export function HeaderForm({ loc }) {
   const fillFromList = (city, name) => {
     name === "from" && setInputFrom({id: city._id, name: city.name});
     name === "to" && setInputTo({id: city._id, name: city.name});
-    setFocus(false);
+    setFocusFrom(false);
+    setFocusTo(false);
   };
   
   const submitForm = (e) => {
     e.preventDefault();
-    console.log(loc)
+    console.log(loc);
+    if (arriveDate.dateMillisec < departDate.dateMillisec) {
+      alert ('Ошибка! Дата прибытия должна следовать за датой отправления');
+      return;
+    }
+
     navigate({
       pathname: '/routes',
       search: createSearchParams ({
@@ -67,18 +74,17 @@ export function HeaderForm({ loc }) {
     });
   };
 
-  const showDate = (date, name, codedDate) => {
+  const showDate = (dateMillisec, date, name, codedDate) => {
     name === "depart" && 
-      setDepartDate({date: date, codedDate: codedDate});
+      setDepartDate({dateMillisec, date, codedDate});
       setCalendarTo(false);
     name === "arrive" &&
-      setArriveDate({date: date, codedDate: codedDate});
+      setArriveDate({dateMillisec, date, codedDate});
       setCalendarBack(false);
   };
 
   //инпут врапперы вынести в отдельный компонент?
   //выправить хук, чтобы не было 100500 запросов на сервер
-  //должен показываться лишь один список городов
   return (
     <form onSubmit={submitForm} className={`headerForm ${loc === "/" ? "headerForm__normal" : "headerForm__slim"}`}>
       <div className={`forwWrapper ${loc === "/" ? "forwWrapper__normal" : "formWrapper__slim"}`}>
@@ -87,28 +93,30 @@ export function HeaderForm({ loc }) {
           <div className="form__row">
             <div className="inputWrapper">
               <input 
+                required={true}
                 className="input from" 
                 placeholder="Откуда"
                 name="from"
                 value={inputFrom.name}
                 onChange={changeInput}
-                onFocus={() => setFocus(true)}>
+                onFocus={() => setFocusFrom(true)}>
               </input>
-              {focus && inputFrom.name && cities.data.length > 0 && <div className="cityOptions">
+              {focusFrom && inputFrom.name && cities.data.length > 0 && <div className="cityOptions">
                 {cities.data.map((city) => <p className="capital" key={city._id} onClick={() => fillFromList(city, "from")}>{city.name}</p>)}
               </div>}
             </div>
             <span className="icon change"></span>
             <div className="inputWrapper">
-              <input 
+              <input
+                required={true}
                 className="input to" 
                 placeholder="Куда"
                 name="to"
                 value={inputTo.name}
                 onChange={changeInput}
-                onFocus={() => setFocus(true)}>
+                onFocus={() => setFocusTo(true)}>
               </input>
-              {focus && inputTo.name && cities.data.length > 0 && <div className="cityOptions">
+              {focusTo && inputTo.name && cities.data.length > 0 && <div className="cityOptions">
                 {cities.data.map((city) => <p className="capital" key={city._id} onClick={() => fillFromList(city, "to")}>{city.name}</p>)}
               </div>}
             </div>
@@ -126,7 +134,7 @@ export function HeaderForm({ loc }) {
                 name="depart"
                 value={departDate.date}>
               </input>
-              {calendarTo && <Calendar showDate={showDate} name="depart"/>}
+              {calendarTo && <Calendar chosenDate={departDate.dateMillisec} showDate={showDate} name="depart"/>}
             </div>
             <div className="inputWrapper">
               <input 
@@ -137,7 +145,7 @@ export function HeaderForm({ loc }) {
                 name="arrive"
                 value={arriveDate.date}>
               </input>
-              {calendarBack && <Calendar showDate={showDate} name="arrive"/>}
+              {calendarBack && <Calendar chosenDate={arriveDate.dateMillisec} showDate={showDate} name="arrive"/>}
             </div>
           </div>
         </div>

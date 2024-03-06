@@ -1,12 +1,12 @@
 import { bool, func, number } from "prop-types";
 
-export default function Cell({ prop, active, callback }) {
+export default function Cell({ prop, passed, active, callback }) {
   const chooseDay = () => {
-    callback(prop);
+    if (!passed) callback(prop);
   }
 
   return (
-    <div className={`cell ${active ? 'active' : ''}`} onClick={chooseDay}>{prop}</div>
+    <div className={`cell ${active ? 'active' : ''} ${passed ? 'passed' : ''}`} onClick={chooseDay}>{prop}</div>
   )
 }
 
@@ -14,4 +14,5 @@ Cell.propTypes = {
   prop: number,
   active: bool,
   callback: func,
+  passed: bool,
 }

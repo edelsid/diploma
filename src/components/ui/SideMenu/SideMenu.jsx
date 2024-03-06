@@ -27,8 +27,8 @@ export default function SideMenu() {
         <Paths />
         <Services />
         <Price />
-        <RideTime name={'Туда'} arrow={<>&rarr;</>}/>
-        <RideTime name={'Обратно'} arrow={<>&larr;</>}/>
+        <RideTime name={'Туда'} arrow={<>&#129050;</>}/>
+        <RideTime name={'Обратно'} arrow={<>&#129048;</>}/>
       </>
       }
     </>
