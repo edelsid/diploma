@@ -2,18 +2,10 @@
 
 header {
   position: relative;
-}
-
-.block__intro, .calendarHeader, .progressCells, .cellNumber {
-  display: flex;
-  justify-content: space-between;
+  z-index: 1;
 }
 
 .introImg, .mainImg {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
   color: #FFFFFF;
 }
 
@@ -33,18 +25,12 @@ header {
   height: 100%;
 }
 
-.block__intro {
-  height: 570px;
-  align-items: center;
-}
-
 .headerPanel {
   height: 94px;
   background-color: #292929;
 }
 
 .headerMenu {
-  display: flex;
   height: 100%;
   align-items: center;
   gap: 165px;
@@ -62,32 +48,24 @@ header {
 }
 
 .headerForm {
-  display: flex;
-  flex-direction: column;
   background-color: rgba(41, 41, 41, 0.8);
 }
 
 .headerForm__normal {
   padding: 85px 20px 50px 20px;
-  width: 690px;
+  width: 730px;
 }
 
 .headerForm__slim {
   padding: 35px 42px 75px 42px;
 }
 
-.formWrapper__slim {
-  display: flex;
-  gap: 35px;
-}
-
 .form__row {
   margin: 20px 0 65px 0;
-  align-items: center;
   gap: 6px;
 }
 
-.form__row__slim {
+.formWrapper__slim, .form__row__slim {
   gap: 35px;
 }
 
@@ -96,15 +74,24 @@ header {
   z-index: 0;
 }
 
-.inputWrapper {
+.inputWrapper, .inputWrapper__side {
   position: relative;
 }
 
-.input, .form__submit {
-  width: 305px;
-  height: 40px;
+.inputWrapper {
+  width: 325px;
+}
+
+.inputWrapper__side {
+  width: 100%;
+}
+
+.input {
+  width: inherit;
+  height: 60px;
   padding: 10px;
   border: 0;
+  border-radius: 3px;
 }
 
 .change {
@@ -115,22 +102,20 @@ header {
 
 .form__submit {
   align-self: flex-end;
-  background-color: #FFA800;
   width: 325px;
-  height: 60px;
-  text-transform: uppercase;
 }
 
 .first, .second {
   position: relative;
 }
 
+/* Календарь */
+
 .calendarWrapper {
   position: absolute;
   top: 80px;
   left: -25px;
   box-shadow: 5px 5px 10px rgba(41, 41, 41, 0.2);
-  z-index: 1;
   border-radius: 10px;
 }
 
@@ -141,11 +126,13 @@ header {
   transform: rotate(45deg);
   width: 30px;
   height: 30px;
-  z-index: -1;
+  z-index: 0;
   background-color: #FFFFFF;
 }
 
 .calendar {
+  position: relative;
+  z-index: 999;
   font-family: 'Saira';
   width: 355px;
   background-color: #FFFFFF;
@@ -154,7 +141,6 @@ header {
 }
 
 .calendarHeader {
-  align-items: center;
   padding: 15px 50px;
   border-bottom: 1px solid #d3d3d3;
   text-transform: capitalize;
@@ -178,7 +164,6 @@ header {
 }
 
 .cell {
-  text-align: center;
   cursor: pointer;
 }
 
@@ -187,7 +172,7 @@ header {
 }
 
 .active {
-  background-color: #FFA800;
+  background-color: #ffaa0073;
   border: 1px solid #FFA800;
   border-radius: 3px;
 }
@@ -195,6 +180,8 @@ header {
 .passed {
   color: #808080;
 }
+
+/* Выбор городов */
 
 .cityOptions {
   width: 305px;
@@ -208,6 +195,15 @@ header {
   box-shadow: 5px 5px 10px rgba(41, 41, 41, 0.2);
 }
 
+.city {
+  font-family: 'Verdana';
+  padding: 5px;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+/* Прогресс заказа */
+
 .progressBar {
   position: relative;
   z-index: -1;
@@ -220,27 +216,16 @@ header {
   width: 258px;
 }
 
-.cellWrapper {
-  display: flex;
-  justify-content: flex-end;
-}
-
 .progressCells {
   height: inherit;
   justify-content: space-evenly;
 }
 
 .progressCell {
-  display: flex;
   width: 100%;
 }
 
-.progressCell, .cellNumber, .cellText {
-  align-items: center;
-}
-
 .cellNumber {
-  justify-content: center;
   border: 1px solid #FFFFFF;
   border-radius: 50%;
   height: 58px;
@@ -249,7 +234,7 @@ header {
 }
 
 .cellText {
-  display: flex;
+  align-items: center;
   width: 100%;
   height: 100%;
   z-index: 1;

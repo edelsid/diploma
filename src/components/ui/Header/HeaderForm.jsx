@@ -11,10 +11,10 @@ export function HeaderForm({ loc }) {
   const cities = useFetch(adress);
   const [calendarTo, setCalendarTo] = useState(false);
   const [calendarBack, setCalendarBack] = useState(false);
-  const [inputFrom, setInputFrom] = useState({id: "", name: ""});
-  const [inputTo, setInputTo] = useState({id: "", name: ""});
-  const [departDate, setDepartDate] = useState({date: "", codedDate: ""});
-  const [arriveDate, setArriveDate] = useState({date: "", codedDate: ""});
+  const [inputFrom, setInputFrom] = useState({});
+  const [inputTo, setInputTo] = useState({});
+  const [departDate, setDepartDate] = useState({});
+  const [arriveDate, setArriveDate] = useState({});
   const [focusFrom, setFocusFrom] = useState(false);
   const [focusTo, setFocusTo] = useState(false);
 
@@ -86,15 +86,15 @@ export function HeaderForm({ loc }) {
   //инпут врапперы вынести в отдельный компонент?
   //выправить хук, чтобы не было 100500 запросов на сервер
   return (
-    <form onSubmit={submitForm} className={`headerForm ${loc === "/" ? "headerForm__normal" : "headerForm__slim"}`}>
-      <div className={`forwWrapper ${loc === "/" ? "forwWrapper__normal" : "formWrapper__slim"}`}>
+    <form onSubmit={submitForm} className={`headerForm flex__column ${loc === "/" ? "headerForm__normal" : "headerForm__slim"}`}>
+      <div className={`forwWrapper ${loc === "/" ? "forwWrapper__normal" : "formWrapper__slim flex"}`}>
         <div className="row__first">
           <label className="row__label">Направление</label>
-          <div className="form__row">
+          <div className="form__row flex__standart">
             <div className="inputWrapper">
               <input 
                 required={true}
-                className="input from" 
+                className="input from capital" 
                 placeholder="Откуда"
                 name="from"
                 value={inputFrom.name}
@@ -102,14 +102,14 @@ export function HeaderForm({ loc }) {
                 onFocus={() => setFocusFrom(true)}>
               </input>
               {focusFrom && inputFrom.name && cities.data.length > 0 && <div className="cityOptions">
-                {cities.data.map((city) => <p className="capital" key={city._id} onClick={() => fillFromList(city, "from")}>{city.name}</p>)}
+                {cities.data.map((city) => <p className="city" key={city._id} onClick={() => fillFromList(city, "from")}>{city.name}</p>)}
               </div>}
             </div>
             <span className="icon change"></span>
             <div className="inputWrapper">
               <input
                 required={true}
-                className="input to" 
+                className="input to capital" 
                 placeholder="Куда"
                 name="to"
                 value={inputTo.name}
@@ -124,7 +124,7 @@ export function HeaderForm({ loc }) {
         </div>
         <div className="row__second">
           <label className="row__label">Дата</label>
-          <div className={`form__row ${loc === "/" ? "" : "form__row__slim"}`}>
+          <div className={`form__row flex__standart ${loc === "/" ? "" : "form__row__slim"}`}>
             <div className="inputWrapper">
               <input
                 className="input first" 
@@ -150,7 +150,7 @@ export function HeaderForm({ loc }) {
           </div>
         </div>
       </div>
-      <button type="submit" className="form__submit">Найти билеты</button>
+      <button type="submit" className="button standart form__submit medium">Найти билеты</button>
     </form>
   )
 }

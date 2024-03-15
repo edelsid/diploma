@@ -2,9 +2,9 @@ export default function ChosenTrain() {
 
   return (
     <div className="panel__wrapper seat">
-      <div className="passenger__panel border__btm">
-        <div className="passenger__panel__header">
-          <h4 className="normal">Поезд</h4>
+      <div className="panel__standart border__btm flex__standart">
+        <div className="flex__standart">
+          <h4 className="medium">Поезд</h4>
         </div>
       </div>
       {/* <Train /> */}
@@ -15,7 +15,7 @@ export default function ChosenTrain() {
         <div className="directions">
 
         </div>
-        <div className="vagonTypes">
+        <div className="vagonTypes flex">
 
         </div>
       </div>

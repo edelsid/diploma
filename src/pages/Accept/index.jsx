@@ -6,7 +6,7 @@ import "./accept.css"
 
 export default function Accept() {
   return (
-    <section className="table">
+    <section className="table flex">
       <div className="column">
         <SideMenu />
       </div>
@@ -15,7 +15,7 @@ export default function Accept() {
         <ChosenPassengers />
         <ChosenPayment />
         <div className="btn__wrapper">
-          <button className="form__submit bold white">Подтвердить</button>
+          <button className="button standart__white">Подтвердить</button>
         </div>
       </div>
     </section>

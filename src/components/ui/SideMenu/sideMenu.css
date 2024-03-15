@@ -33,18 +33,17 @@
   padding: 30px;
 }
 
+.parameters__total {
+  margin-bottom: 100px;
+}
+
 .label {
-  display: block;
   margin-bottom: 10px;
 }
 
 .input__side {
-  width: calc(100% - 20px);
   margin-bottom: 32px;
-}
-
-.service {
-  align-items: center;
+  height: 45px;
 }
 
 .service:not(:last-child) {
@@ -52,20 +51,16 @@
 }
 
 .name {
+  display: grid;
+  grid-template-columns: 20px auto;
   font-size: 18px;
-}
-
-.name::before {
-  font-family: 'Font Awesome 6 Free';
-  font-weight: bold;
-  margin-right: 35px;
-  vertical-align: middle;
+  gap: 30px;
 }
 
 .switch {
   position: relative;
   display: inline-block;
-  width: 75px;
+  width: 70px;
   height: 20px;
 }
 
@@ -101,7 +96,7 @@ input:checked + .slider {
 }
 
 input:checked + .slider:before {
-  transform: translateX(48px);
+  transform: translateX(43px);
   background-color: #FFA800;
 }
 
@@ -117,11 +112,14 @@ input:checked + .slider:before {
   margin-top: 30px;
 }
 
+.slider__large, .slider__large::-webkit-slider-thumb {
+  appearance: none;
+  height: 25px;
+}
+
 /* The slider itself */
 .slider__large {
-  appearance: none;
   width: 100%;
-  height: 25px;
   background-color: #3e3c41; 
   border: 1px solid white;
   outline: none;
@@ -135,37 +133,18 @@ input:checked + .slider:before {
 .slider__large::-webkit-slider-thumb {
   appearance: none;
   width: 25px;
-  height: 25px;
   background-color: #FFA800;
   cursor: pointer;
-  height: 25px;
   border-radius: 50%;
 }
 
-.range {
-  font-size: 14px;
-}
-
-.wayBtn {
+.button__way {
   border: 0;
   background-color: #FFA800;
   border-radius: 8px;
   height: 30px;
   font-weight: bold;
   font-size: 18px;
-}
-
-.wayWrapper {
-  align-items: center;
-}
-
-.nameWrapper {
-  align-items: baseline;
-  gap: 10px;
-}
-
-.way {
-  margin: 0;
 }
 
 .openBtn {
@@ -181,43 +160,45 @@ input:checked + .slider:before {
 
 .way__desc {
   margin-top: 55px;
-  text-align: center;
 }
 
 .latestTickets {
-  margin-top: 100px;
+  margin: 100px 0 100px 0;
 }
 
 .ticket {
   padding: 18px;
   border: 1px solid #c4c4c4;
+  box-shadow: 0 1px 5px #c4c4c4;
   margin-bottom: 20px;
 }
 
 .pathways {
+  justify-content: space-between;
   margin-bottom: 40px;
 }
 
 .passenger__desc {
-  margin: 20px 0 0 0;
-}
-
-.passengers, .total__wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  margin-top: 20px;
 }
 
 .passengers {
-  
   margin-top: 20px;
 }
 
 .passenger__type {
-  display: flex;
   gap: 5px;
 }
 
-.price > h4, .price > h2 {
-  margin-bottom: 0;
+.line {
+  margin-bottom: 25px;
+}
+
+.directions__side {
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr;
+}
+
+.gap {
+  margin-bottom: 25px;
 }

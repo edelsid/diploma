@@ -11,10 +11,10 @@ export default function ProgressCell({ item, phase, count, length }) {
   }, []);
 
   return (
-    <div className="cellWrapper" style={{width: `calc(100% / ${length}`, backgroundColor: `${prevActive && '#FFA800'}`}}>
+    <div className="flex__end" style={{width: `calc(100% / ${length}`, backgroundColor: `${prevActive && '#FFA800'}`}}>
       <div className="progressCell" style={{backgroundColor: `${active && '#FFA800'}`}}>
-      <div className="cellText">
-        <div className="cellNumber">{count}</div>
+      <div className="cellText flex">
+        <div className="cellNumber flex__center">{count}</div>
         <p className="cellName">{item}</p>
       </div>
       </div>

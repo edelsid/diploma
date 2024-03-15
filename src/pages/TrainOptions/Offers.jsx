@@ -7,7 +7,6 @@ export default function Offers({ data }) {
   if (data.items.length > 0) {
     console.log (data)
   } else console.log('nothing found')
-  //выделить отдельные стили для кнопок и т.д.
 
   return (
     <div className="offers offers__trains">

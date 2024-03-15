@@ -1,26 +1,28 @@
 import ContactForm from "./ContactForm"
+import List from "../../../models/List"
+import Div from "../../../models/Div"
 import { useSelector } from "react-redux"
 
 export default function Contacts() {
-  const socials = useSelector(state => state.site.socials);
-  const contacts = useSelector(state => state.site.contacts);
+  const socials = useSelector(state => state.root.site.socials);
+  const contacts = useSelector(state => state.root.site.contacts);
 
   return (
-    <section id="contacts" className="contacts">
+    <section id="contacts" className="contacts flex">
       <div className="contactPanel">
         <h3>Свяжитесь с нами</h3>
-        <ul className="contactList">
+        <List className="contactList">
           {Object.keys(contacts).map((key) => <li key={key} className={`listItem ${key}`}>{contacts[key]}</li>)}
-        </ul>
+        </List>
       </div>
       <div className="subscribePanel">
         <h3>Подписка</h3>
         <ContactForm></ContactForm>
         <div className="iconList">
           <h3>Подписывайтесь на нас</h3>
-          <ul className="sbList">
-            {socials.map((item) => <li className={item} key={item}></li>)}
-          </ul>
+          <Div className="subscribeList flex">
+            {socials.map((item) => <img className={`footerIcon lightGreyIcon ${item.name}`} key={item.name} src={item.img}></img>)}
+          </Div>
         </div>
       </div>
     </section>

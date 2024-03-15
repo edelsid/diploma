@@ -3,6 +3,7 @@
 
 * {
   scroll-behavior: smooth;
+  box-sizing: border-box;
 }
 
 body {
@@ -15,17 +16,23 @@ section {
   margin: 0 258px;
 }
 
-h1, h3, h4, p {
+aside {
+  display: flex;
+  flex-direction: column;
+  width: 360px;
+  padding: 0 28px;
+  border-bottom: 1px solid #E5E5E5;
+}
+
+h1, h2, h3, h4, p {
   margin: 0;
 }
 
 h1 {
   font-size: 72px;
-  margin-bottom: 50px;
 }
 
 h2 {
-  margin-top: 0;
   font-size: 36px;
   font-weight: 500;
   text-transform: uppercase;
@@ -37,7 +44,6 @@ h3 {
 
 h4 {
   font-size: 24px;
-  margin-bottom: 30px;
 }
 
 ul {
@@ -48,10 +54,12 @@ ul {
 button {
   font-family: 'Roboto';
   font-size: 24px;
+  line-height: 24px;
   border-radius: 3px;
 }
 
 input {
+  font-family: 'Verdana';
   font-size: 24px;
 }
 
@@ -60,13 +68,11 @@ a {
 }
 
 select {
-  border: 1px solid white;
-  outline: none;
   padding: 3px;
+  font-size: 16px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  font-size: 16px;
 }
 
 ::-webkit-input-placeholder {
@@ -75,10 +81,6 @@ select {
 
 .container {
   position: relative;
-}
-
-.center {
-  text-align: center;
 }
 
 .background, .portrait {
@@ -94,35 +96,131 @@ select {
   margin-bottom: 15px;
 }
 
-.auto {
+.table {
+  justify-content: space-between;
+  margin-top: 95px;
+}
+
+.serviceList {
+  gap: 10px;
+}
+
+.nameWrapper {
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+}
+
+/* Кнопки на белом фоне */
+
+.button, .button__transp, .onBlack__standart {
+  font-weight: bold;
+}
+
+.button__transp {
+  padding: 10px 60px;
+}
+
+.button:hover, .button__transp:hover {
+  box-shadow: 0 4px 4px #00000040;
+}
+
+.button:disabled {
+  background-color: #928f94;
+  border: 1px solid #928f94;
+}
+
+.button:active {
+  background-color: #ffffff;
+  color: #FFA800;
+  border: 1px solid #FFA800;
+}
+
+.button__transp:active {
+  background-color: #FFA800;
   color: black;
 }
 
-.small {
+.standart, .standart__white, .narrow {
+  border: 1px solid #FFA800;
+  background-color: #FFA800;
+}
+
+.standart, .standart__white {
+  padding: 20px 65px;
+  text-transform: uppercase;
+}
+
+.standart__white, .narrow {
+  color: white;
+}
+
+.narrow {
+  padding: 10px 20px;
+}
+
+.compact {
+  padding: 10px 35px;
+}
+
+.narrow__black {
+  background-color: #00000000;
+  color: black;
+  border: 1px solid black;
+}
+
+/* Кнопки на черном фоне */
+
+.transp__button {
+  background-color: #00000000;
+  color: white;
+  border: 1px solid white;
+}
+
+.transp__button:hover {
+  background-color: #ffca62;
+  border: 1px solid #ffca62;
+}
+
+.transp__button:active {
+  background-color: white;
+  border: 1px solid white;
+  color: black;
+}
+
+.onBlack {
+  padding: 20px 65px;
+  font-weight: bold;
+}
+
+.onBlack__small {
+  text-transform: uppercase;
+  padding: 20px;
+}
+
+/* Отдельные характеристики */
+
+.px22 {
+  font-size: 22px;
+}
+
+.px18 {
+  font-size: 18px;
+}
+
+.px16 {
   font-size: 16px;
 }
 
-.smaller {
+.px14 {
   font-size: 14px;
-}
-
-.grey {
-  color: #928f94;
-}
-
-.capital {
-  text-transform: capitalize;
 }
 
 .thin {
   font-weight: 100;
 }
 
-.big {
-  font-size: 22px;
-}
-
-.normal {
+.medium {
   font-weight: 400;
 }
 
@@ -130,12 +228,16 @@ select {
   font-weight: bold;
 }
 
-.orange {
-  color: #FFA800;
+.center {
+  text-align: center;
 }
 
 .toRigth {
   text-align: end;
+}
+
+.capital {
+  text-transform: capitalize;
 }
 
 .upper {
@@ -146,84 +248,52 @@ select {
   color: white;
 }
 
-.faint {
-  font-size: 18px;
-  color: #928F94;
-  font-style: italic;
+.black {
+  color: black;
 }
 
-.citation {
-  position: relative;
+.grey {
+  color: #928f94;
 }
 
-.citation::before, .citation::after {
-  font-size: 48px;
-  color: #7a7a7a;
-  line-height: 1px;
-  position: absolute;
+.orange {
+  color: #FFA800;
 }
 
-.citation::before {
-  top: 20px;
-  left: -30px;
-  content: "\201C";
+.border__btm {
+  border-bottom: 1px dotted #c4c4c4;
 }
 
-.citation::after {
-  content: "\201D";
-  bottom: -10px;
+.greyIcon {
+  filter: 
+    invert(80%) 
+    sepia(12%) 
+    saturate(11%) 
+    hue-rotate(21deg) 
+    brightness(95%) 
+    contrast(98%);
 }
 
-.indicators {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 135px;
+.lightGreyIcon {
+  filter: 
+    invert(99%) 
+    sepia(1%) 
+    saturate(4435%) 
+    hue-rotate(227deg) 
+    brightness(118%) 
+    contrast(80%);
 }
 
-.indicator {
-  height: 19px;
-  width: 19px;
-  background-color: #E5E5E5;
-  border: 0;
-  border-radius: 50%;
-}
-
-.serviceList {
-  display: flex;
-  color: #c4c4c4;
-}
-
-.icon::before {
-  margin-left: 10px;
-}
-
-.air_cond::before {
-  content: url('./assets/icons/air.png')
-}
-
-.wifi::before {
-  content: url('./assets/icons/wifi.png')
-}
-
-.express::before {
-  content: url('./assets/icons/express.png')
-}
-
-.frst_class::before {
-  content: url('./assets/icons/first.png');
-}
-
-.sec_class::before {
-  content: url('./assets/icons/sec.png');
-}
-
-.trd_class::before {
-  content: url('./assets/icons/third.png');
-}
-
-.frth_class::before {
-  content: url('./assets/icons/sit.png');
+.icon__active {
+  filter: 
+    brightness(0) 
+    saturate(100%) 
+    invert(76%) 
+    sepia(29%) 
+    saturate(5633%) 
+    hue-rotate(357deg) 
+    brightness(101%) 
+    contrast(106%);
 }
 
 .panel__wrapper {
@@ -231,6 +301,53 @@ select {
   border: 1px solid #c4c4c4;
 }
 
+.panel__standart {
+  padding: 35px 40px 35px 20px;
+}
+
 .next {
   background-color: #928f94
+}
+
+/* Флексы */
+
+.flex, .flex__end, .flex__standart, .flex__column, .flex__center {
+  display: flex;
+}
+
+.flex__standart {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex__end {
+  justify-content: flex-end;
+}
+
+.flex__column {
+  flex-direction: column;
+  align-items: center;
+}
+
+.flex__center {
+  justify-content: center;
+  align-items: center;
+}
+
+/* Чекмарк */
+
+.checkmark {
+  margin-right: 10px;
+  width: 25px;
+  height: 25px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid #928f94;
+  border-radius: 3px;
+}
+
+.check label {
+  display: flex;
+  align-items: center;
 }

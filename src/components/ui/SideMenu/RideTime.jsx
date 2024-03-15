@@ -12,24 +12,24 @@ export default function RideTime({ name, arrow }) {
   //слайдеры в отдельный компонент
   return (
     <aside className="parameters parameters__way">
-      <div className="wayWrapper">
-        <div className="nameWrapper">
-          <button type="button" className="wayBtn">{arrow}</button>
-          <h4 className="way">{name}</h4>
+      <div className="directionWrapper flex__standart">
+        <div className="nameWrapper flex">
+          <button type="button" className="button__way">{arrow}</button>
+          <h4>{name}</h4>
         </div>
-        <button type="button" className="openBtn" onClick={handleClick}>{open ? "-" : "+"}</button>
+        <button type="button" className="openBtn flex__center" onClick={handleClick}>{open ? "-" : "+"}</button>
       </div>
       {open && 
       <div className="slidecontainer">
-        <h4 className="label normal opened">Время отбытия</h4>
+        <h4 className="label medium opened">Время отбытия</h4>
         <input type="range" min="1" max="100" value="1" className="slider__large" id="myRange"></input>
-        <div className="range">
+        <div className="range flex__standart px14">
           <p>00:00</p>
           <p>24:00</p>
         </div>
-        <h4 className="label normal opened toRigth">Время прибытия</h4>
+        <h4 className="label medium opened toRigth">Время прибытия</h4>
         <input type="range" min="1" max="100" value="1" className="slider__large" id="myRange"></input>
-        <div className="range">
+        <div className="range flex__standart px14">
           <p>00:00</p>
           <p>24:00</p>
         </div>

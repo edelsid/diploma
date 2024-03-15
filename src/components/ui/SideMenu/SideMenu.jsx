@@ -18,8 +18,8 @@ export default function SideMenu() {
       {location.pathname !== '/routes' && location.pathname !== '/seats' ? 
       <>
         <SideHeader />
-        <PathInfo name={'Туда'} arrow={<>&rarr;</>} date='20.08.2018'/>
-        <PathInfo name={'Обратно'} arrow={<>&larr;</>} date='09.09.2018'/>
+        <PathInfo name={'Туда'} arrow={<>&#129050;</>} date='20.08.2018'/>
+        <PathInfo name={'Обратно'} arrow={<>&#129048;</>} date='09.09.2018'/>
         <PassengerInfo />
         <Total />
       </> :

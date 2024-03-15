@@ -1,7 +1,7 @@
 .block__confirm {
-  box-sizing: border-box;
   position: absolute;
   top: -310px;
+  z-index: 1;
   width: -webkit-fill-available;
 }
 
@@ -10,28 +10,53 @@
 }
 
 .confirm__panel {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  margin-top: 50px;
   background-color: white;
-  height: 1110px;
   box-shadow: 0 1px 5px #00000075;
 }
 
-.confirm__panel__header > h4 {
-  margin: 0;
-}
-
 .confirm__panel__header, .confirm__panel__footer {
-  display: flex;
-  justify-content: space-between;
-  padding: 65px 55px;
+  padding: 50px 85px;
 }
 
 .overview__panel {
-  padding: 205px 55px;
+  padding: 55px 205px;
+}
+
+.furtherSteps {
+  justify-content: space-between;
+  margin: 0 0 150px 0;
+  padding: 0 135px;
+}
+
+.step {
+  width: 25%;
+}
+
+.step__img {
+  width: 125px;
+  height: 125px;
+}
+
+.thanks h3 {
+  margin-bottom: 50px;
+}
+
+.bestWishes {
+  margin: 100px 0 85px 0;
 }
 
 .confirm__panel__footer {
   background-color: #FFA800;
+}
+
+.rating {
+  gap: 30px;
+}
+
+.rating__symbols {
+  line-height: 44px;
+  font-size: 44px;
+  color: white;
+  margin: 0;
 }

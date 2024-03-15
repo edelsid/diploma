@@ -1,31 +1,15 @@
 import List from "../../../models/List"
 import Service from "../../items/Service"
+import { useSelector } from "react-redux";
 
 export default function Services() {
-  const services = [{
-    name: 'Купе',
-    class: 'sec_class'
-  }, {
-    name: 'Плацкарт',
-    class: 'trd_class',
-  }, {
-    name: 'Сидящий',
-    class: 'frth_class',
-  }, {
-    name: 'Люкс',
-    class: 'frst_class',
-  }, {
-    name: 'Wi-Fi',
-    class: 'wifi'
-  }, {
-    name: 'Экспресс',
-    class: 'express'
-  }];
+  const services = useSelector(state => state.root.site.services);
+  const sideServices = services.filter(item => item.name !== "cond" && item.name !== "food" && item.name !== "bed");
 
   return (
     <aside className="parameters parameters__service"> 
       <List className={"services"}>
-        {services.map((item) => <Service key={services.indexOf(item)} item={item} />)}
+        {sideServices.map((item) => <Service key={services.indexOf(item)} item={item}/>)}
       </List>
     </aside>
   )

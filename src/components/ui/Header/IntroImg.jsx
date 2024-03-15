@@ -17,7 +17,7 @@ export default function IntroImg({ children, loc }) {
   })
   
   return (
-    <div className={`background ${loc === '/' || loc === '/confirm' ? 'introImg' : 'mainImg'}`} style={{backgroundImage: `url(${imgPath})`}}>
+    <div className={`background flex__column flex__end ${loc === '/' || loc === '/confirm' ? 'introImg' : 'mainImg'}`} style={{backgroundImage: `url(${imgPath})`}}>
       {children}
     </div>
   )

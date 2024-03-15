@@ -1,11 +1,20 @@
-.payment__form, .cash {
+.form__wrapper__standart {
   padding: 35px;
 }
 
-.payment__form {
-  height: 235px;
+.cash {
+  height: 95px;
+  align-items: center;
 }
 
-.cash {
-  height: 165px;
+.phone label, .email label {
+  width: 370px;
+}
+
+.email {
+  margin-bottom: 55px;
+}
+
+.onlinePayment__options {
+  gap: 105px;
 }

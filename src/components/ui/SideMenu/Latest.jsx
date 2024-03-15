@@ -18,16 +18,15 @@ export default function Latest() {
       name: "express",
       status: true,
     }, {
-      name: "air_cond",
+      name: "cond",
       status: true,
     }],
     price: '2 500',
   }];
 
-  //css причесать и сравнить с фигмой
   return (
     <div className="latestTickets">
-      <h3 className="title">Последние билеты</h3>
+      <h3 className="upper">Последние билеты</h3>
       <List className="ticketList">
         {latestTickets.map((item) => <LatestRide key={latestTickets.indexOf(item)} item={item}/>)}
       </List>

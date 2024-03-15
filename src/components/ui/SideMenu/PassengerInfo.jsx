@@ -14,12 +14,12 @@ export default function PassengerInfo() {
 
   return (
     <aside className="parameters parameters__passengers">
-      <div className="wayWrapper">
-        <div className="nameWrapper">
+      <div className="directionWrapper flex__standart">
+        <div className="nameWrapper flex">
           <span className="icon">+</span>
-          <h4 className="way">Пассажиры</h4>
+          <h4>Пассажиры</h4>
         </div>
-        <button type="button" className="openBtn">-</button>
+        <button type="button" className="openBtn flex__center">-</button>
       </div>
       <List className="passenger__desc">
         {passengers.map((item) => <PassengerString key={item.name} item={item}/>)}

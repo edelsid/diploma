@@ -6,21 +6,14 @@
   margin-bottom: 45px;
 }
 
-.passenger__form, .passport__form, .next__passenger, .add__passenger {
+.passenger__form__wrapper, .add__passenger {
   padding: 35px;
 }
 
-.passenger__panel {
-  box-sizing: border-box;
-  padding: 35px 20px;
-}
-
-.passenger__panel__header, .button__round {
-  display: flex;
-}
-
-.passenger__panel__header > h4 {
-  margin: 0;
+.panel__standart span {
+  font-size: 14px;
+  color: #c4c4c4;
+  user-select: none;
 }
 
 .button__round {
@@ -30,42 +23,89 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  align-items: center;
-  justify-content: center;
   margin-right: 20px;
 }
 
+.passport__form__wrapper {
+  padding: 40px;
+}
+
 .passenger__form {
-  height: 450px;
+  flex-direction: column;
+  gap: 50px;
 }
 
-.passport__form {
-  height: 155px;
-  padding-top: 40px;
+.form__label {
+  width: 280px;
 }
 
-.next__passenger {
-  height: 120px;
-  display: flex;
-  justify-content: end;
-  align-items: end;
+.form__label select, .passenger__input {
+  width: 100%;
 }
 
-.border__btm {
-  border-bottom: 1px dotted #c4c4c4;
+.additions, .passport {
+  gap: 35px;
 }
 
-.next__passanger__button {
+.additions .form__label, .passport .form__label {
+  width: 200px;
+}
+
+.passenger__input, #documentType {
+  margin-top: 15px;
+}
+
+.form__label {
+  font-size: 18px;
+  color: #928f94;
+}
+
+.form__label select, .passenger__input {
+  padding: 15px;
+  font-size: 18px;
+  border-radius: 3px;
+  border: 1px solid #928f94;
+}
+
+.form__label select {
+  background-image:
+    linear-gradient(45deg, transparent 50%, gray 50%),
+    linear-gradient(135deg, gray 50%, transparent 50%);
+  background-position:
+    calc(100% - 20px) calc(1em + 5px),
+    calc(100% - 15px) calc(1em + 5px),
+    calc(100% - 2.5em) 0.5em;
+  background-size:
+    5px 5px,
+    5px 5px,
+    1px 1.5em;
+  background-repeat: no-repeat;
+}
+
+.gender button {
   background-color: #ffffff00;
-  padding: 15px 25px;
+}
+
+.gender button.active {
+  background-color: #FFA800;
+}
+
+.gender__male {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.gender__female {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.disability {
+  margin-bottom: 35px;
 }
 
 .add__passenger__btn {
   color: #FFA800;
   border: 0;
   background-color: #ffffff00;
-}
-
-.add__passenger > .passenger__panel__header {
-  justify-content: space-between;
 }

@@ -10,7 +10,6 @@ footer {
 
 .contacts {
   padding: 50px 82px;
-  display: flex;
   justify-content: space-between;
   line-height: 2.7rem;
 }
@@ -25,19 +24,19 @@ footer {
 }
 
 .tel::before {
-  content: url('../../../assets/icons/phone.png');
+  content: url('../../../assets/icons/phone.svg');
 }
 
 .mail::before {
-  content: url('../../../assets/icons/mail.png');
+  content: url('../../../assets/icons/mail.svg');
 }
 
 .skype::before {
-  content: url('../../../assets/icons/skype.png');
+  content: url('../../../assets/icons/skype.svg');
 }
 
 .adress::before {
-  content: url('../../../assets/icons/place.png');
+  content: url('../../../assets/icons/place.svg');
 }
 
 .subscribeForm {
@@ -45,60 +44,37 @@ footer {
 }
 
 .formInput {
-  display: flex;
+  margin-top: 20px;
+  gap: 35px;
 }
 
-.sbInput {
-  width: 447px;
-  height: 40px;
+.subscribeInput {
+  width: 445px;
+  height: 65px;
   padding: 10px;
-}
-
-.sbButton {
-  margin-left: 33px;
-  width: 170px;
-  text-transform: uppercase;
-}
-
-.transparent {
-  background-color: #29292900;
-  border: 1px solid #FFFFFF;
-  color: #FFFFFF;
+  border-radius: 3px;
+  border: 0;
 }
 
 .iconList {
   margin-top: 44px;
 }
 
-.sbList {
-  display: flex;
+.subscribeList {
+  margin-top: 25px;
   gap: 55px;
 }
 
-.yt {
-  content: url('../../../assets/icons/yt.png');
-}
-
-.in {
-  content: url('../../../assets/icons/in.png');
-}
-
-.google {
-  content: url('../../../assets/icons/google.png');
-}
-
-.fb {
-  content: url('../../../assets/icons/fb.png');
-}
-
-.tw {
-  content: url('../../../assets/icons/tw.png');
-}
-
-.footerPanel {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.footerIcon:active {
+  filter: 
+    brightness(0) 
+    saturate(100%) 
+    invert(97%) 
+    sepia(99%) 
+    saturate(7437%) 
+    hue-rotate(311deg) 
+    brightness(103%) 
+    contrast(102%);
 }
 
 .toTop {
@@ -110,7 +86,7 @@ footer {
 }
 
 .toTop::after {
-  content: url('../../../assets/icons/arrow.png');
-  display: block;
-  text-align: center;
+  content: url('../../../assets/icons/arrow.svg');
+  line-height: 8px;
+  height: 14px;
 }

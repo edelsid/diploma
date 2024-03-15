@@ -1,4 +1,4 @@
-import SeatPanel from "../../components/items/SeatPanel"
+import SeatPanel from "./SeatPanel"
 import List from "../../models/List"
 
 export default function SeatChoice() {
@@ -13,7 +13,7 @@ export default function SeatChoice() {
         {data.map((item) => <SeatPanel key={data.indexOf(item)} />)}
       </List>
       <div className="btn__wrapper">
-        <button className="offer__btn next bold upper">Далее</button>
+        <button className="button standart__white">Далее</button>
       </div>
     </div>
   )

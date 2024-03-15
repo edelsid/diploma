@@ -1,4 +1,4 @@
-import { object } from "prop-types";
+import { object, array } from "prop-types";
 
 export default function VagonType({ item, prices }) {
   let price;
@@ -19,18 +19,18 @@ export default function VagonType({ item, prices }) {
 
   return (
     <li className="vagon__desc">
-      <p className="small">{name}</p>
-      <p className="small orange">{item[1]}</p>
-      <div className="price price__vagon">
+      <p className="px16">{name}</p>
+      <p className="px16 orange">{item[1]}</p>
+      <div className="price price__vagon flex__standart">
         <p className="grey">от</p>
-        <p className="bold big">{price}</p>
-        <h3 className="grey normal big">Р</h3>
+        <h4>{price}</h4>
+        <h4 className="grey medium">Р</h4>
       </div>
     </li>
   )
 }
 
 VagonType.propTypes = {
-  item: object,
+  item: array,
   prices: object,
 }

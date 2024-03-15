@@ -5,7 +5,7 @@ import "./payment.css"
 
 export default function Payment() {
   return (
-    <section className="table">
+    <section className="table flex">
       <div className="column">
         <SideMenu />
       </div>
@@ -15,7 +15,7 @@ export default function Payment() {
           <PaymentMethod />
         </div>
         <div className="btn__wrapper">
-          <button className="form__submit bold white">Купить билеты</button>
+          <button className="button standart__white">Купить билеты</button>
         </div>
       </div>
     </section>

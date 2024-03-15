@@ -12,9 +12,9 @@ export default function Footer() {
       <div className="contactsWrapper">
         <Contacts></Contacts>
       </div>
-      <section className="footerPanel">
+      <section className="footerPanel flex__standart">
         <p className="logo">Лого</p>
-        <div className="toTop" onClick={goToTop}></div>
+        <div className="toTop flex__center" onClick={goToTop}></div>
         <p>2018 WEB</p>
       </section>
     </footer>

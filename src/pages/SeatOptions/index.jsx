@@ -5,7 +5,7 @@ import "./options.css"
 
 export default function SeatOptions() {
   return (
-    <section className="table">
+    <section className="table flex">
       <div className="column">
         <SideMenu />
         <Latest />

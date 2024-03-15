@@ -1,4 +1,4 @@
-import { number, object, string } from "prop-types";
+import { number, object } from "prop-types";
 import Destination from "../../components/items/Destination"
 
 export default function Direction({ arrow, to, back, fullTime }) {
@@ -9,8 +9,8 @@ export default function Direction({ arrow, to, back, fullTime }) {
   return (
     <div className="direction">
       <Destination item={to}/>
-      <div className="additional">
-        <p className="small grey">{hh + ' : ' + min}</p>
+      <div className="additional flex__column">
+        <p className="px16 grey">{hh + ' : ' + min}</p>
         <p className="arrow__to orange">{arrow}</p>
       </div>
       <Destination item={back}/>
@@ -19,7 +19,7 @@ export default function Direction({ arrow, to, back, fullTime }) {
 }
 
 Direction.propTypes = {
-  arrow: string,
+  arrow: object,
   to: object,
   back: object,
   fullTime: number,

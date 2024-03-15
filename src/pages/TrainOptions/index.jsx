@@ -11,7 +11,7 @@ export default function TrainOptions() {
   const trains = useFetch(`${rawURL + location.pathname + location.search}`);
 
   return (
-    <section className="table">
+    <section className="table flex">
       <div className="column">
         <SideMenu />
         <Latest />

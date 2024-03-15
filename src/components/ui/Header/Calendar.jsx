@@ -6,7 +6,7 @@ import Cell from "../../items/Cell";
 import { func, number, string } from "prop-types";
 
 export default function Calendar({ chosenDate, showDate, name }) {
-  const date = useSelector(state => state.site.date);
+  const date = useSelector(state => state.root.site.date);
   const today = getDate(new Date(date));
   const currentMonth = getMonth(new Date(date));
   const [currentDate, setCurrentDate] = useState(date);
@@ -30,16 +30,14 @@ export default function Calendar({ chosenDate, showDate, name }) {
   }
 
   useEffect(() => {
-    if (chosenDate) {
-      setChosenDay(getDate(chosenDate));
-    }
+    if (chosenDate) setChosenDay(getDate(chosenDate));
   }, []);
 
   return (
     <div className="calendarWrapper">
       <div className="calendarArrow"></div>
       <div className="calendar">
-        <div className="calendarHeader">
+        <div className="calendarHeader flex__standart">
           <p onClick={prevMonth} className="changeMonth">&#129168;</p>
           <p className="month">{format(currentDate, 'LLLL', {locale: ru})}</p>
           <p onClick={nextMonth} className="changeMonth">&#129170;</p>

@@ -4,19 +4,41 @@
   background-color: #e4e0e9;
 }
 
-.passenger__overview {
-  display: flex;
+.all__passengers, .changeback, .passenger__info__wrapper {
+  flex-direction: column;
+}
+
+.overview {
   justify-content: space-between;
-  padding: 35px;
+  padding: 60px 35px 25px 35px;
+}
+
+.all__passengers {
+  gap: 75px;
+}
+
+.passenger {
+  gap: 35px;
+}
+
+.passenger:last-child {
+  margin-bottom: 75px;
+}
+
+.passenger__info__wrapper, .passenger__icon__wrapper, .sum {
+  gap: 10px;
 }
 
 .changeback {
-  display: flex;
-  flex-direction: column;
   justify-content: flex-end;
   align-items: flex-end;
 }
 
 .totalsum {
-  margin-bottom: 10px;
+  width: 100%;
+  margin-bottom: 35px;
+}
+
+.chosen__option {
+  margin-bottom: 60px;
 }

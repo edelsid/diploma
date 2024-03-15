@@ -2,17 +2,13 @@
   margin-bottom: 60px;
 }
 
-.seats__panel__header, .type__list {
-  display: flex;
-}
-
 .seats__panel {
   padding: 35px 20px;
 }
 
 .seats__panel__header {
   height: 60px;
-  margin-bottom: 55px;
+  gap: 10px;
 }
 
 .sign {
@@ -23,14 +19,16 @@
   border: 0;
 }
 
-.back__button {
-  margin-left: 10px;
-  background-color: #ffffff00;
-  padding: 0 35px;
+.train__desc {
+  padding: 0 15px;
 }
 
-.train__desc {
-  margin-bottom: 70px;
+.train__type__seats {
+  margin: 52px 0 67px 0;
+}
+
+.direction__full__seats {
+  width: 195px;
 }
 
 .type__list {
@@ -39,16 +37,28 @@
 }
 
 .seat__type {
-  height: 155px;
-  padding: 20px 17px;
-  text-align: center;
+  padding: 20px 33px;
+  width: 33%;
+}
+
+.age {
+  margin-bottom: 45px;
+}
+
+.seat__type__panel {
+  border: 1px solid #928f94;
+  border-radius: 3px;
+  padding: 20px;
+}
+
+.explanation {
+  margin-top: 25px;
 }
 
 .border {
   height: 50px;
   border-top: 1px solid #c4c4c4;
   border-bottom: 1px dotted #c4c4c4;
-  margin-bottom: 35px;
 }
 
 .type__icon {
@@ -64,4 +74,123 @@
 
 .seat {
   margin-bottom: 25px;
+}
+
+.train__icon__seats::after {
+  content: url('../../assets/icons/train_or.png');
+  margin-right: 28px;
+}
+
+.timeOverview {
+  margin: 52px 0 67px 95px;
+  width: max-content;
+}
+
+.train__icon__time::after {
+  content: url('../../assets/icons/clock.png');
+  margin-right: 10px;
+}
+
+.seat__type__comfort {
+  padding: 20px 33px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fourth {
+  content: url('../../assets/icons/fourth_big.svg');
+}
+
+.third {
+  content: url('../../assets/icons/third_big.svg');
+}
+
+.second {
+  content: url('../../assets/icons/second_big.svg');
+}
+
+.first {
+  content: url('../../assets/icons/first_big.svg');
+}
+
+.vagonScheme__header {
+  height: 35px;
+  padding: 0 33px;
+  background-color: #ffd98f;
+}
+
+.vagonScheme__general {
+  height: 160px;
+}
+
+.vagon__numbers {
+  gap: 5px;
+}
+
+.vagon__number {
+  justify-content: center;
+  width: 190px;
+  background-color: #ffd98f;
+}
+
+.vagon__number h1 {
+  margin-bottom: 0;
+}
+
+.vagonSceme__grid {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 37px 60px 0 85px;
+}
+
+.grid__col {
+  flex-direction: column;
+  gap: 20px;
+}
+
+.grid__col:last-child {
+  align-items: center;
+}
+
+.grid__col div {
+  display: flex;
+  gap: 5px;
+}
+
+.icon__vagon {
+  padding: 3px;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+.icon__vagon:hover {
+  background-color: #FFA800;
+  border: 1px solid black;
+}
+
+.icon__vagon:not(:last-child) {
+  margin-right: 13px;
+}
+
+.chosen {
+  background-color: #0057ff;
+  border: 1px solid #0057ff;
+  filter: invert(100%);
+}
+
+.chosen:hover {
+  background-color: #0057ff;
+  border: 1px solid #0057ff;
+}
+
+.choosingWithYou {
+  padding: 0 65px;
+  height: 65px;
+  align-items: center;
+}
+
+.choosingWithYou p {
+  width: 170px;
 }

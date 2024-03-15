@@ -6,7 +6,7 @@ export default function Cell({ prop, passed, active, callback }) {
   }
 
   return (
-    <div className={`cell ${active ? 'active' : ''} ${passed ? 'passed' : ''}`} onClick={chooseDay}>{prop}</div>
+    <div className={`cell center ${active ? 'active' : ''} ${passed ? 'passed' : ''}`} onClick={chooseDay}>{prop}</div>
   )
 }
 

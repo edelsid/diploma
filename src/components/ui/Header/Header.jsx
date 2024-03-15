@@ -6,8 +6,9 @@ import { useLocation } from "react-router-dom"
 import "./header.css"
 
 export default function Header() {
-  const menu = useSelector(state => state.site.menu);
+  const menu = useSelector(state => state.root.site.menu);
   const location = useLocation();
+  const path = location.pathname;
   const locTable = [{
     count: 1,
     loc: '/routes',
@@ -27,26 +28,26 @@ export default function Header() {
 
   let currentPhase;
   locTable.forEach((item) => {
-    if (item.loc === location.pathname) currentPhase = item.count;
+    if (item.loc === path) currentPhase = item.count;
   });
 
   return (
     <header>
-      <IntroImg loc={location.pathname}>
+      <IntroImg loc={path}>
         <div className="panelWrapper">
           <section className="logo">Лого</section>
           <div className="headerPanel">
-            <section className="headerMenu">
-              {menu.map((item) => <a key={item.name} className="menuItem" href={item.link}>{item.name}</a>)}
+            <section className="headerMenu flex">
+              {menu.map((item) => <a key={item.name} className="menuItem" href={path === "/" ? item.link : `/${item.link}`}>{item.name}</a>)}
             </section>
           </div>
         </div>
-        <section className="block block__intro">
-          {location.pathname === '/' && <h1 className="slogan"><p className="thin">Вся жизнь - </p>путешествие!</h1>}
-          {location.pathname !== '/confirm' && <HeaderForm loc={location.pathname} />}
+        <section className="block flex__standart">
+          {path === '/' && <h1 className="slogan"><p className="thin">Вся жизнь - </p>путешествие!</h1>}
+          {path !== '/confirm' && <HeaderForm loc={path} />}
         </section>
       </IntroImg>
-      {location.pathname !== '/' && location.pathname !== '/confirm' && <ProgressBar phase={currentPhase}/>}
+      {path !== '/' && path !== '/confirm' && <ProgressBar phase={currentPhase}/>}
     </header>
   )
 }

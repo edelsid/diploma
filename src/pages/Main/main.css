@@ -4,6 +4,7 @@
 
 .aboutText {
   padding-left: 20px;
+  margin-top: 40px;
   border-left: 8px solid #FFA800;
 }
 
@@ -12,7 +13,6 @@
 }
 
 .aboutImg {
-  height: 575px;
   padding: 70px 0;
   background-color: #FFA800;
 }
@@ -21,26 +21,13 @@
   color: #FFFFFF;
 }
 
-.rules__header, .prosList, .feedbackList, .feedback__item, .form__row {
-  display: flex;
-  justify-content: space-between;
-}
-
-.moreButton {
-  width: 325px;
-  height: 60px;
-}
-
 .prosList {
-  margin: 110px 0 0 0;
+  margin-top: 110px;
   padding: 0 250px;
 }
 
 .list__item {
   width: 30%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .pro__item {
@@ -49,9 +36,6 @@
   height: 162px;
   background-color: #ffffff20;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .pro__item::after {
@@ -75,13 +59,54 @@
   padding: 160px 0 120px 0;
 }
 
-.feedbackList {
+.feedback__list {
   margin-top: 80px;
 }
 
 .feedback__item {
   width: 45%;
-  align-items: center;
+}
+
+.citation {
+  position: relative;
+  margin-top: 30px;
+}
+
+.citation::before, .citation::after {
+  font-size: 48px;
+  color: #7a7a7a;
+  line-height: 1px;
+  position: absolute;
+}
+
+.citation::before {
+  top: 20px;
+  left: -30px;
+  content: "\201C";
+}
+
+.citation::after {
+  content: "\201D";
+  bottom: -10px;
+}
+
+.faint {
+  font-size: 18px;
+  color: #928F94;
+  font-style: italic;
+}
+
+.indicators {
+  gap: 12px;
+  margin-top: 135px;
+}
+
+.indicator {
+  height: 19px;
+  width: 19px;
+  background-color: #E5E5E5;
+  border: 0;
+  border-radius: 50%;
 }
 
 .portrait {
