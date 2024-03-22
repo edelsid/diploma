@@ -18,6 +18,8 @@ export default function OverviewGrid({ vagon, back }) {
     side: 0,
   };
 
+  console.log(coach)
+
   if (coach.class_type === "second" || coach.class_type === "third") {
     seats.forEach((seat) => {
       if (seat.index > 32) availableSeats.side += 1;
@@ -28,7 +30,7 @@ export default function OverviewGrid({ vagon, back }) {
   
   const services = [{
     name: "cond",
-    status: coach.have_air_conditioning,
+    status: true,
     price: 0,
   }, {
     name: "wifi",
@@ -39,6 +41,8 @@ export default function OverviewGrid({ vagon, back }) {
     status: coach.is_linens_included,
     price: coach.linens_price,
   }];
+
+  const shortServices = services.slice(0, -1);
 
   const addServiceInfo = (service) => {
     dispatch(changeServices({
@@ -79,7 +83,9 @@ export default function OverviewGrid({ vagon, back }) {
           <p className="px16 lightgrey">ФПК</p>
         </div>
         <List className="vagonServices flex">
-          {services.map((item) => <ServiceIcon key={services.indexOf(item)} service={item} allServices={allServices} addServiceInfo={addServiceInfo}/>)}
+          {coach.class_type !== "fourth" ? 
+          services.map((item) => <ServiceIcon key={services.indexOf(item)} service={item} allServices={allServices} addServiceInfo={addServiceInfo}/>) :
+          shortServices.map((item) => <ServiceIcon key={services.indexOf(item)} service={item} allServices={allServices} addServiceInfo={addServiceInfo}/>)}
         </List>
       </div>
     </div>
