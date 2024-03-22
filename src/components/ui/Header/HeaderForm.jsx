@@ -57,7 +57,6 @@ export function HeaderForm({ loc }) {
   
   const submitForm = (e) => {
     e.preventDefault();
-    console.log(loc);
     if (arriveDate.dateMillisec < departDate.dateMillisec) {
       alert ('Ошибка! Дата прибытия должна следовать за датой отправления');
       return;
@@ -68,8 +67,8 @@ export function HeaderForm({ loc }) {
       search: createSearchParams ({
         from_city_id: inputFrom.id,
         to_city_id: inputTo.id,
-        date_start: departDate.codedDate,
-        date_end: arriveDate.codedDate,
+        ...(departDate.codedDate && {date_start: departDate.codedDate}),
+        ...(arriveDate.codedDate && {date_end: departDate.codedDate}),
       }).toString()
     });
   };

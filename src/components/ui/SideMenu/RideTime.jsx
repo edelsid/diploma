@@ -1,15 +1,28 @@
 import { element, string } from "prop-types";
 import { useState } from "react"
+import Slider from "../../items/Slider";
 
 export default function RideTime({ name, arrow }) {
   const [open, setOpen] = useState(false);
+  const [range, setRange] = useState({
+    departRange: 0,
+    arriveRange: 0,
+  });
 
   const handleClick = () => {
     if (open) setOpen(false);
     else setOpen(true);
   }
 
-  //слайдеры в отдельный компонент
+  const handleChange = (e) => {
+    const {id, value} = e.target;
+    setRange((prevForm) => ({
+      ...prevForm,
+      departRange: id === 'departRange' ? value : prevForm.departRange,
+      arriveRange: id === 'arriveRange' ? value : prevForm.arriveRange,
+    }));
+  }
+
   return (
     <aside className="parameters parameters__way">
       <div className="directionWrapper flex__standart">
@@ -22,17 +35,9 @@ export default function RideTime({ name, arrow }) {
       {open && 
       <div className="slidecontainer">
         <h4 className="label medium opened">Время отбытия</h4>
-        <input type="range" min="1" max="100" value="1" className="slider__large" id="myRange"></input>
-        <div className="range flex__standart px14">
-          <p>00:00</p>
-          <p>24:00</p>
-        </div>
+        <Slider id="departRange" min={0} max={24} value={range.departRange} step={1} handleChange={handleChange} labels={["00:00", "24:00"]}/>
         <h4 className="label medium opened toRigth">Время прибытия</h4>
-        <input type="range" min="1" max="100" value="1" className="slider__large" id="myRange"></input>
-        <div className="range flex__standart px14">
-          <p>00:00</p>
-          <p>24:00</p>
-        </div>
+        <Slider id="arriveRange" min={0} max={24} value={range.arriveRange} step={1} handleChange={handleChange} labels={["00:00", "24:00"]}/>
       </div>}
     </aside>
   )

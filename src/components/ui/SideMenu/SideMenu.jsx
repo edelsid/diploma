@@ -8,14 +8,14 @@ import Services from "./Services"
 import Price from "./Price"
 import RideTime from "./RideTime"
 import "./sideMenu.css"
+import { arrayOf, number } from "prop-types"
 
-export default function SideMenu() {
+export default function SideMenu({ prices }) {
   const location = useLocation();
 
-  //Сделать функционал для большого слайдера
   return (
     <>
-      {location.pathname !== '/routes' && location.pathname !== '/seats' ? 
+      {!location.pathname.includes("/routes") ? 
       <>
         <SideHeader />
         <PathInfo name={'Туда'} arrow={<>&#129050;</>} date='20.08.2018'/>
@@ -26,11 +26,14 @@ export default function SideMenu() {
       <>
         <Paths />
         <Services />
-        <Price />
+        <Price prices={prices}/>
         <RideTime name={'Туда'} arrow={<>&#129050;</>}/>
         <RideTime name={'Обратно'} arrow={<>&#129048;</>}/>
-      </>
-      }
+      </>}
     </>
   )
+}
+
+SideMenu.propTypes = {
+  prices: arrayOf(number),
 }

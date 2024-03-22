@@ -12,7 +12,7 @@ export default function PaymentMethod() {
       </div>
       <div className="form__wrapper__standart online border__btm">
         <form className="onlinePayment__form check">
-          <label className="form__label">
+          <label className="form__label px18">
             <input type="checkbox" className="checkmark" id="online__payment"></input>
             Онлайн
           </label>
@@ -22,7 +22,7 @@ export default function PaymentMethod() {
         </form>
       </div>
       <div className="form__wrapper__standart cash check flex">
-        <label className="form__label">
+        <label className="form__label px18">
           <input type="checkbox" className="checkmark" id="cash__payment"></input>
           Наличными
         </label>

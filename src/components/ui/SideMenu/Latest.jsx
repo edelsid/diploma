@@ -1,35 +1,17 @@
 import List from "../../../models/List"
 import LatestRide from "../../items/LatestRide"
+import { useFetch } from "../../../hooks/useFetch";
 
 export default function Latest() {
-  const latestTickets = [{
-    from: {
-      city: 'Санкт-Петербург',
-      station: 'Курский вокзал',
-    },
-    back: {
-      city: 'Самара',
-      station: 'Московский вокзал',
-    },
-    services: [{
-      name: "wifi",
-      status: true,
-    }, {
-      name: "express",
-      status: true,
-    }, {
-      name: "cond",
-      status: true,
-    }],
-    price: '2 500',
-  }];
+  const rawURL = import.meta.env.VITE_API_URL;
+  const latestTickets = useFetch(`${rawURL}/routes/last`);
 
   return (
     <div className="latestTickets">
       <h3 className="upper">Последние билеты</h3>
-      <List className="ticketList">
-        {latestTickets.map((item) => <LatestRide key={latestTickets.indexOf(item)} item={item}/>)}
-      </List>
+        <List className="ticketList">
+          {latestTickets.data && latestTickets.data.map((item) => <LatestRide key={latestTickets.data.indexOf(item)} item={item}/>)}
+        </List>
     </div>
   )
 }

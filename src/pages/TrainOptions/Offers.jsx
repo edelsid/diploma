@@ -4,16 +4,16 @@ import List from "../../models/List"
 import Train from "../../components/items/Train";
 
 export default function Offers({ data }) {
-  if (data.items.length > 0) {
-    console.log (data)
-  } else console.log('nothing found')
+  if (data.items.length === 0) {
+    console.log ('nothing found')
+  } 
 
   return (
     <div className="offers offers__trains">
       <OffersHeader count={data.items.length}/>
-      <List className="offers__list">
+      {data.items.length > 0 ? <List className="offers__list">
         {data.items.map((item) => <Train key={item.id} item={item} />)}
-      </List>
+      </List> : <div className="nothingFound">Извините, ничего не найдено</div>}
     </div>
   )
 }

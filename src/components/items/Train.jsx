@@ -2,24 +2,40 @@ import Direction from "../../pages/TrainOptions/Direction";
 import List from "../../models/List";
 import Icon from "./Icon";
 import VagonType from "./VagonType";
+import reformatTime from "../../utils/reformatTime";
 import { object } from "prop-types";
-import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { addRoute } from "../../store/order"
 
 export default function Train({ item }) {
-  const {arrival, departure, have_air_conditioning, have_wifi, is_express } = item;
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const {arrival, departure } = item;
+  let arrivalTime;
+  if (arrival) arrivalTime = reformatTime(arrival.duration);
+  const departureTime = reformatTime(departure.duration);
   const allServices = useSelector (state => state.root.site.services);
   const services = [
     {
       name: "wifi",
-      status: have_wifi,
+      status: departure.have_wifi,
     }, {
       name: "express",
-      status: is_express,
+      status: departure.is_express,
     }, {
       name: "cond",
-      status: have_air_conditioning,
-    },
-  ];
+      status: departure.have_air_conditioning,
+    }];
+
+  const chooseTrain = (e) => {
+    e.preventDefault();
+    dispatch(addRoute({item}));
+
+    navigate({
+      pathname: `/routes/${departure._id}/seats`
+    });
+  }
 
   return (
     <li className="train">
@@ -31,9 +47,9 @@ export default function Train({ item }) {
       </div>
 
       <div className="directions">
-        <Direction arrow={<>&#129050;</>} to={departure.from} back={departure.to} fullTime={departure.duration}></Direction>
+        <Direction arrow={<>&#129050;</>} from={departure.from} to={departure.to} time={departureTime}></Direction>
         {arrival && 
-        <Direction arrow={<>&#129048;</>} to={arrival.to} back={arrival.from} fullTime={arrival.duration}></Direction>}
+        <Direction arrow={<>&#129048;</>} from={arrival.to} to={arrival.from} time={arrivalTime}></Direction>}
       </div>
 
       <div className="vagonTypes flex">
@@ -43,7 +59,7 @@ export default function Train({ item }) {
         <List className="serviceList flex right">
           {services.map((item) => <Icon key={services.indexOf(item)} service={item} allServices={allServices}/>)}
         </List>
-        <button className="button narrow">Выбрать места</button>
+        <button className="button narrow" onClick={chooseTrain}>Выбрать места</button>
       </div>
     </li>
   )

@@ -1,21 +1,18 @@
 import IntroImg from "./IntroImg"
 import ProgressBar from "./ProgressBar";
 import { HeaderForm } from "./HeaderForm";
-import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom"
+import { useSelector, useDispatch } from "react-redux";
+import { clearAll } from "../../../store/order";
+import { useLocation, useNavigate } from "react-router-dom"
 import "./header.css"
 
 export default function Header() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const menu = useSelector(state => state.root.site.menu);
   const location = useLocation();
   const path = location.pathname;
   const locTable = [{
-    count: 1,
-    loc: '/routes',
-  }, {
-    count: 1,
-    loc: '/seats',
-  }, {
     count: 2,
     loc: '/passengers',
   }, {
@@ -26,16 +23,21 @@ export default function Header() {
     loc: '/accept',
   }];
 
-  let currentPhase;
+  let currentPhase = 1;
   locTable.forEach((item) => {
     if (item.loc === path) currentPhase = item.count;
   });
+
+  const toMain = () => {
+    dispatch(clearAll());
+    navigate('/');
+  }
 
   return (
     <header>
       <IntroImg loc={path}>
         <div className="panelWrapper">
-          <section className="logo">Лого</section>
+          <section className="logo" onClick={toMain}>Лого</section>
           <div className="headerPanel">
             <section className="headerMenu flex">
               {menu.map((item) => <a key={item.name} className="menuItem" href={path === "/" ? item.link : `/${item.link}`}>{item.name}</a>)}

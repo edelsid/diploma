@@ -13,14 +13,15 @@
 
 .sign {
   background-color: #FFA800;
+  font-size: 30px;
   padding: 0 20px;
   color: #ffffff;
-  border-radius: 3px;
   border: 0;
 }
 
 .train__desc {
   padding: 0 15px;
+  gap: 10px;
 }
 
 .train__type__seats {
@@ -33,7 +34,7 @@
 
 .type__list {
   margin-top: 25px;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .seat__type {
@@ -114,14 +115,10 @@
   content: url('../../assets/icons/first_big.svg');
 }
 
-.vagonScheme__header {
+.vagonList__header {
   height: 35px;
   padding: 0 33px;
   background-color: #ffd98f;
-}
-
-.vagonScheme__general {
-  height: 160px;
 }
 
 .vagon__numbers {
@@ -154,43 +151,143 @@
   align-items: center;
 }
 
-.grid__col div {
+.grid__col > div {
   display: flex;
   gap: 5px;
 }
 
-.icon__vagon {
-  padding: 3px;
-  border: 1px solid black;
+.vagonServices {
+  gap: 15px;
+}
+
+.icon__back {
+  display: block;
   border-radius: 3px;
-}
-
-.icon__vagon:hover {
-  background-color: #FFA800;
+  background-color: white;
   border: 1px solid black;
 }
 
-.icon__vagon:not(:last-child) {
-  margin-right: 13px;
+.free__back:hover {
+  background-color: #FFA800;
+}
+
+.icon__vagon {
+  padding: 3px 4px;
+}
+
+.chosen__back {
+  background-color: #FFA800;
+  border: 1px solid #FFA800;
 }
 
 .chosen {
-  background-color: #0057ff;
-  border: 1px solid #0057ff;
   filter: invert(100%);
 }
 
-.chosen:hover {
-  background-color: #0057ff;
-  border: 1px solid #0057ff;
+.included__back {
+  background-color: #ffd98f;
+  border: 1px solid #ffd98f;
+}
+
+.included {
+  filter: saturate(100%) invert(68%) sepia(0%) brightness(86%) contrast(78%);
 }
 
 .choosingWithYou {
-  padding: 0 65px;
+  padding: 20px 65px 0 65px;
   height: 65px;
   align-items: center;
 }
 
 .choosingWithYou p {
   width: 170px;
+}
+
+.schemeGrarhic {
+  margin: 20px;
+  position: relative;
+}
+
+.seats {
+  width: 710.5px;
+  position: absolute;
+  top: 6px;
+  left: 135.3px;
+}
+
+.smallSeats {
+  width: 700px;
+  top: 9px;
+  left: 141px;
+}
+
+.sideRow {
+  margin-top: 28px;
+}
+
+.thinRow {
+  width: 610px;
+  margin: 14px 0 0 45px;
+}
+
+.singleSeat {
+  width: 26px;
+  height: 29.5px;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #cccccc;
+  color: white;
+  cursor: pointer;
+}
+
+.singleSeat:nth-child(even) {
+  margin-left: 34px;
+}
+
+.singleSeat:nth-child(odd):not(:first-child) {
+  margin-left: 2.7px;
+}
+
+.firstSeat {
+  height: 60px;
+  justify-content: center;
+  align-items: end;
+  padding-bottom: 5px;
+}
+
+.thirdSeat {
+  width: 52px;
+  height: 23px;
+}
+
+.thirdSeat:nth-child(even) {
+  margin-left: 0;
+}
+
+.fourthSeat {
+  width: 26px;
+  height: 20px;
+  margin-bottom: 3px;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #cccccc;
+  color: white;
+  cursor: pointer;
+}
+
+.free {
+  background-color: white;
+  color: black;
+}
+
+.free:hover {
+  background-color: #FFA800;
+}
+
+.chosenSeat {
+  border: 1px solid #FFA800;
+}
+
+.ticketCost {
+  padding: 0 40px 20px;
 }

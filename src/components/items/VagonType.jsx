@@ -11,7 +11,8 @@ export default function VagonType({ item, prices }) {
   };
   
   Object.entries(prices).forEach(([key, value]) => {
-    if (key === item[0]) price = value.top_price;
+    if (key === item[0]) price = value.bottom_price;
+    if (key === item[0] && value.price) price = value.price;
   });
   Object.entries(names).forEach(([key, value]) => {
     if (key === item[0]) name = value;
@@ -24,7 +25,7 @@ export default function VagonType({ item, prices }) {
       <div className="price price__vagon flex__standart">
         <p className="grey">от</p>
         <h4>{price}</h4>
-        <h4 className="grey medium">Р</h4>
+        <h4 className="grey medium">&#x20BD;</h4>
       </div>
     </li>
   )

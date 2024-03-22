@@ -1,4 +1,4 @@
-import { number, string, arrayOf, element } from "prop-types"
+import { number, string, arrayOf, element, object, bool, oneOfType, node } from "prop-types"
 import Div from "../../models/Div"
 
 export default function Column({ name, total, children }) {
@@ -19,5 +19,11 @@ export default function Column({ name, total, children }) {
 Column.propTypes = {
   name: string,
   total: number,
-  children: arrayOf(element),
+  children: oneOfType([
+    arrayOf(element),
+    object,
+    element,
+    bool,
+    node,
+  ]),
 }

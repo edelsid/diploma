@@ -9,11 +9,22 @@ export default function TrainOptions() {
   const rawURL = import.meta.env.VITE_API_URL;
   const location = useLocation();
   const trains = useFetch(`${rawURL + location.pathname + location.search}`);
+  //const placeholder = {items: []};
+  let prices = [];
+  if (trains.data !== undefined) trains.data.items.forEach(item => {
+    for (const [key, value] of Object.entries(item.departure.price_info)) {
+      if (key === "first") prices.push(value.price)
+      else {
+        prices.push(value.top_price);
+        prices.push(value.bottom_price);
+      }
+    }
+  });
 
   return (
     <section className="table flex">
       <div className="column">
-        <SideMenu />
+        <SideMenu prices={prices}/>
         <Latest />
       </div>
       <div className="column">

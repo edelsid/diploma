@@ -15,6 +15,10 @@
   width: 960px;
 }
 
+.offers__header {
+  justify-content: space-between;
+}
+
 .filters {
   gap: 145px;
 }
@@ -23,13 +27,12 @@
   gap: 7px;
 }
 
-.header__select {
-  border: 1px solid white;
-  outline: none;
+.train {
+  box-shadow: 0 4px 4px #00000040;
 }
 
-.train {
-  box-shadow: 0 1px 5px #c4c4c4;
+.train:hover {
+  border: 1px solid #FFA800;
 }
 
 .train__type {
@@ -62,7 +65,7 @@
 
 .direction {
   display: grid;
-  grid-template-columns: 115px auto 115px;
+  grid-template-columns: 115px max-content 115px;
   gap: 35px;
   margin: 52px 0 67px 0;
 }
@@ -92,4 +95,8 @@
 
 .vagonTypes button {
   margin-bottom: 20px;
+}
+
+.nothingFound {
+  margin-top: 50px;
 }

@@ -1,4 +1,4 @@
-import { arrayOf, element, object, string, oneOfType } from "prop-types"
+import { arrayOf, element, object, string, oneOfType, node } from "prop-types"
 
 export default function Div({ className, children }) {
   return (
@@ -13,5 +13,7 @@ Div.propTypes = {
   children: oneOfType([
     arrayOf(element),
     object,
+    element,
+    node,
   ]),
 }

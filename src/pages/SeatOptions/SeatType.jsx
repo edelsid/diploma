@@ -2,9 +2,11 @@ import { func, object } from "prop-types";
 
 export default function SeatType({ item, showSeats }) {
   let text = '';
+
+  //от чего это зависит?
   const texts = {
-    adult: `Можно добавить еще ${item.count} пассажиров.`,
-    children: `Можно добавить еще ${item.count} детей до 10 лет. Свое место в вагоне, как у взрослых, но дешевле в среднем на 50-60%`
+    adult: `Можно добавить еще 4 пассажиров.`,
+    children: `Можно добавить еще 4 детей до 10 лет. Свое место в вагоне, как у взрослых, но дешевле в среднем на 50-60%`
   }
   Object.entries(texts).forEach(([key, value]) => {
     if (key === item.codename) text = value;
