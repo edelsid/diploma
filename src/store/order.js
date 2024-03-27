@@ -100,6 +100,13 @@ const order = createSlice({
       }
       state.services.to.push(service);
     },
+    addPassenger(state, action) {
+      const found = state.passengers.find(e => e.id === action.payload.formData.id);
+      if (!found) state.passengers.push(action.payload.formData);
+    },
+    clearPassenger(state, action) {
+      state.passengers = state.passengers.filter((item) => item.id !== action.payload.id);
+    },
     clearAll: () => initialState,
     clearAllSeats(state) {
       state.seats.forEach((item) => item.count = 0);
@@ -127,5 +134,5 @@ const order = createSlice({
   }
 });
 
-export const { addRoute, changeSeats, changeServices, clearAll, clearAllSeats, clearPresentSeats } = order.actions;
+export const { addRoute, changeSeats, changeServices, clearAll, clearAllSeats, clearPresentSeats, addPassenger, clearPassenger } = order.actions;
 export default order.reducer;

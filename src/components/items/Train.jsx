@@ -32,9 +32,7 @@ export default function Train({ item }) {
     e.preventDefault();
     dispatch(addRoute({item}));
 
-    navigate({
-      pathname: `/routes/${departure._id}/seats`
-    });
+    navigate(`/routes/${departure._id}/seats`);
   }
 
   return (

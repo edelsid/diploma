@@ -1,8 +1,8 @@
 import { bool, number, object, func, string } from "prop-types";
 import { useState, useEffect } from "react";
 
-export default function Seat({ item, free, alreadyChosen, props, thirdRow }) {
-  const { type, chooseSeat } = props;
+export default function Seat({ props, thirdRow }) {
+  const { item, type, free, alreadyChosen, chooseSeat } = props;
   const [chosen, setChosen] = useState(false);
 
   const seatCheck = (item) => {

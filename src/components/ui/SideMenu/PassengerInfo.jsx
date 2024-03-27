@@ -1,16 +1,32 @@
 import PassengerString from "../../items/PassengerString"
 import List from "../../../models/List"
+import { object } from "prop-types";
 
-export default function PassengerInfo() {
+export default function PassengerInfo({ seats }) {
+  const getCount = (category) => {
+    return seats.filter((item) => item.category === category);
+  };
+
+  const getSum = (category) => {
+    const byCategory = getCount(category);
+    let sum = 0;
+    byCategory.forEach(item => sum = sum + item.cost);
+    return sum;
+  };
+
   const passengers = [{
-    name: 'Взрослых',
-    count: 2,
-    price: 2920,
+    name: "Взрослых",
+    count: getCount("adult").length,
+    price: getSum("adult"),
   }, {
-    name: 'Дети',
-    count: 1,
-    price: 1920,
-  }]
+    name: "Дети",
+    count: getCount("child").length,
+    price: getSum("child"),
+  }, {
+    name: `Дети "без места"`,
+    count: getCount("noseat").length,
+    price: getSum("noseat"),
+  }];
 
   return (
     <aside className="parameters parameters__passengers">
@@ -22,8 +38,12 @@ export default function PassengerInfo() {
         <button type="button" className="openBtn flex__center">-</button>
       </div>
       <List className="passenger__desc">
-        {passengers.map((item) => <PassengerString key={item.name} item={item}/>)}
+        {passengers.map((item) => item.count > 0 && <PassengerString key={item.name} item={item}/>)}
       </List>
     </aside>
   )
+}
+
+PassengerInfo.propTypes = {
+  seats: object,
 }

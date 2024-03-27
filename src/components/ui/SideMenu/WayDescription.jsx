@@ -1,33 +1,41 @@
 import { element, object } from "prop-types";
+import reformatTime from "../../../utils/reformatTime";
 import Destination from "../../items/Destination"
 
-export default function WayDescription({ train, arrow }) {
-  const hh = new Date(train.fulltime).getHours().toString();
-  const mm = new Date(train.fulltime).getMinutes().toString().padStart(2, '0');
+export default function WayDescription({ route, arrow, date, backDate }) {
+  const { from, to, train, duration } = route;
+  const rideDuration = reformatTime(duration);
+  const { hh, min } = rideDuration;
 
   return (
     <div className="way__desc">
       <div className="line flex__standart">
         <p className="px16">№ Поезда</p>
-        <p className="bold">{train.index}</p>
+        <p className="bold">{train.name}</p>
       </div>
       <div className="line flex__standart">
         <p className="px16">Название</p>
-        <p className="px16 bold toRigth">{train.passed}<br/>{train.to.city.name}</p>
+        <div className="px16 bold toRigth capital">
+          <p>{from.city.name}</p>
+          <p>{to.city.name}</p>
+        </div>
+        
       </div>
-      <p className="center px16">{hh} : {mm}</p>
+      <p className="center px16">{hh} : {min}</p>
       <div className="directions__side">
-        <Destination item={train.from} side={true}/>
+        <Destination item={from} side={true} date={date}/>
         <div className="additional flex__column">
           <p className="arrow__to orange">{arrow}</p>
         </div>
-        <Destination item={train.to} side={true} right={true}/>
+        <Destination item={to} side={true} right={true} date={backDate}/>
       </div>
     </div>
   )
 }
 
 WayDescription.propTypes = {
-  train: object,
+  route: object,
   arrow: element,
+  date: object,
+  backDate: object,
 }

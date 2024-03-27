@@ -2,13 +2,13 @@ import IntroImg from "./IntroImg"
 import ProgressBar from "./ProgressBar";
 import { HeaderForm } from "./HeaderForm";
 import { useSelector, useDispatch } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
 import { clearAll } from "../../../store/order";
-import { useLocation, useNavigate } from "react-router-dom"
 import "./header.css"
 
 export default function Header() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
   const menu = useSelector(state => state.root.site.menu);
   const location = useLocation();
   const path = location.pathname;

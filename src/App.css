@@ -419,7 +419,57 @@ select {
   border-radius: 3px;
 }
 
+.checkmark__active::after {
+  font-size: 16px;
+  content: "\2714";
+}
+
 .check label {
   display: flex;
   align-items: center;
+}
+
+/* Ошибки и всплывающие окна */
+
+.errorWindow {
+  background-color: #ffb59e;
+}
+
+.completeWindow {
+  background-color: #b2f6a1;
+}
+
+.popup__message {
+  align-items: center;
+  gap: 10px;
+}
+
+.icon__error, .icon__complete {
+  background-color: white;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  user-select: none;
+}
+
+.icon__error {
+  color: #ffb59e;
+}
+
+.icon__complete {
+  color: #b2f6a1;
+}
+
+.incorrect {
+  border: 1px solid #ff784c;
+  color: #ff784c;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
+input.incorrect:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+  -webkit-text-fill-color: #ff784c;
 }

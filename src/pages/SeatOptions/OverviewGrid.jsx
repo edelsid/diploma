@@ -18,8 +18,6 @@ export default function OverviewGrid({ vagon, back }) {
     side: 0,
   };
 
-  console.log(coach)
-
   if (coach.class_type === "second" || coach.class_type === "third") {
     seats.forEach((seat) => {
       if (seat.index > 32) availableSeats.side += 1;

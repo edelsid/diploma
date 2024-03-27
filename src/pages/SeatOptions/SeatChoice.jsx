@@ -2,9 +2,11 @@ import SeatPanel from "./SeatPanel"
 import List from "../../models/List"
 import { useSelector } from "react-redux"
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { object, bool, arrayOf } from "prop-types";
 
 export default function SeatChoice({ back, seatsTo, seatsBack }) {
+  const navigate = useNavigate();
   const routeData = useSelector(state => state.root.order.route);
   const chosenSeats = useSelector(state => state.root.order.places);
   const chosenServices = useSelector(state => state.root.order.services);
@@ -21,9 +23,12 @@ export default function SeatChoice({ back, seatsTo, seatsBack }) {
   }, [chosenSeats]);
 
   const forward = () => {
-    console.log(chosenSeats);
-    console.log(chosenServices);
-    console.log('im saving this and moving forward');
+    if (!disabled) {
+      console.log(chosenSeats);
+      console.log(chosenServices);
+      console.log('im saving this and moving forward');
+      navigate("/passengers");
+    }
   }
 
   return (

@@ -8,9 +8,9 @@ import Services from "./Services"
 import Price from "./Price"
 import RideTime from "./RideTime"
 import "./sideMenu.css"
-import { arrayOf, number } from "prop-types"
+import { arrayOf, number, object } from "prop-types"
 
-export default function SideMenu({ prices }) {
+export default function SideMenu({ prices, route, seats, services }) {
   const location = useLocation();
 
   return (
@@ -18,10 +18,13 @@ export default function SideMenu({ prices }) {
       {!location.pathname.includes("/routes") ? 
       <>
         <SideHeader />
-        <PathInfo name={'Туда'} arrow={<>&#129050;</>} date='20.08.2018'/>
-        <PathInfo name={'Обратно'} arrow={<>&#129048;</>} date='09.09.2018'/>
-        <PassengerInfo />
-        <Total />
+        <PathInfo name={'Туда'} arrow={<>&#129050;</>} data={route.departure}/>
+        <PassengerInfo seats={seats.to}/>
+        {route.arrival && <>
+          <PathInfo name={'Обратно'} arrow={<>&#129048;</>} data={route.arrival}/>
+          <PassengerInfo seats={seats.back}/>
+        </>}
+        <Total seats={seats} services={services}/>
       </> :
       <>
         <Paths />
@@ -36,4 +39,7 @@ export default function SideMenu({ prices }) {
 
 SideMenu.propTypes = {
   prices: arrayOf(number),
+  route: object,
+  seats: arrayOf(object),
+  services: arrayOf(object),
 }

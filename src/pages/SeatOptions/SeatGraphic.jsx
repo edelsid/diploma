@@ -47,60 +47,52 @@ export default function SeatGraphic({ coach, seats, back, category }) {
     return result;
   }
 
-  const props = {
-    type,
-    chooseSeat,
-  };
+  const gatherProps = (item) => {
+    const props = {
+      item, 
+      type,
+      free: freeSeats.includes(item),
+      alreadyChosen: chosenByDirection.find(e => e.item === item && e.vagon === coach.name),
+      chooseSeat,
+    };
+    return props;
+  }
 
   return (
     <div className={`seats ${type === "fourth" && "smallSeats"}`}>
       <Div className="seatRow flex__standart">
         {type !== "first" ? 
-        highSeats.map((item) => <Seat 
-          item={item} 
-          free={freeSeats.includes(item)} 
-          alreadyChosen={chosenByDirection.find(e => e.item === item && e.vagon === coach.name)} 
-          key={item} 
-          props={props}/>) : 
+        highSeats.map((item) => <Seat
+          props={gatherProps(item)} 
+          key={item}/>) : 
         firstClassSeats.map((item) => <Seat 
-          item={item} 
-          free={freeSeats.includes(item)} 
-          alreadyChosen={chosenByDirection.find(e => e.item === item && e.vagon === coach.name)} 
-          key={item} 
-          props={props}/>)}
+          props={gatherProps(item)} 
+          key={item}/>)}
       </Div>
 
       {type !=="first" && 
       <Div className="seatRow flex__standart">
-        {lowSeats.map((item) => <Seat item={item} 
-          free={freeSeats.includes(item)} 
-          alreadyChosen={chosenByDirection.find(e => e.item === item && e.vagon === coach.name)} 
-          key={item} 
-          props={props}/>)}
+        {lowSeats.map((item) => <Seat 
+          props={gatherProps(item)} 
+          key={item}/>)}
       </Div>}
 
       {type === "third" || type === "fourth" ? 
       <Div className={`seatRow flex__standart ${type === "fourth" ? "thinRow" : "sideRow"}`}>
-        {type === "third" && sideSeats.map((item) => <Seat item={item} 
-          free={freeSeats.includes(item)} 
-          alreadyChosen={chosenByDirection.find(e => e.item === item && e.vagon === coach.name)} 
-          key={item} 
-          props={props}
+        {type === "third" && sideSeats.map((item) => <Seat 
+          props={gatherProps(item)} 
+          key={item}
           thirdRow={true}/>)}
-        {type === "fourth" && sittingSeats.map((item) => <Seat item={item} 
-          free={freeSeats.includes(item)} 
-          alreadyChosen={chosenByDirection.find(e => e.item === item && e.vagon === coach.name)} 
-          key={item} 
-          props={props}/>)}
+        {type === "fourth" && sittingSeats.map((item) => <Seat 
+          props={gatherProps(item)} 
+          key={item}/>)}
       </Div> : <></>}
 
       {type === "fourth" && 
       <Div className="seatRow flex__standart">
-        {remainingSittingSeats.map((item) => <Seat item={item} 
-          free={freeSeats.includes(item)} 
-          alreadyChosen={chosenByDirection.find(e => e.item === item && e.vagon === coach.name)} 
-          key={item} 
-          props={props}/>)}
+        {remainingSittingSeats.map((item) => <Seat 
+          props={gatherProps(item)} 
+          key={item}/>)}
       </Div>}
     </div>
   )

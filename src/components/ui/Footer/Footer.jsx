@@ -1,15 +1,20 @@
 import Contacts from "./Contacts"
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { clearAll } from "../../../store/order";
 import "./footer.css"
 
 export default function Footer() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const goToTop = (e) => {
     e.preventDefault();
     window.scrollTo(0, 0);
   }
 
   const toMain = () => {
+    dispatch(clearAll());
     navigate('/');
     window.scrollTo(0, 0);
   }
