@@ -1,8 +1,11 @@
+import person from "../../../assets/icons/person.svg"
 import PassengerString from "../../items/PassengerString"
 import List from "../../../models/List"
-import { object } from "prop-types";
+import { useState } from "react";
+import { object, arrayOf, oneOfType } from "prop-types";
 
 export default function PassengerInfo({ seats }) {
+  const [open, setOpen] = useState(true);
   const getCount = (category) => {
     return seats.filter((item) => item.category === category);
   };
@@ -28,16 +31,25 @@ export default function PassengerInfo({ seats }) {
     price: getSum("noseat"),
   }];
 
+  const openWindow = () => {
+    setOpen(!open);
+  }
+
   return (
     <aside className="parameters parameters__passengers">
       <div className="directionWrapper flex__standart">
-        <div className="nameWrapper flex">
-          <span className="icon">+</span>
+        <div className="nameWrapper flex__standart">
+          <img className="icon" src={person}></img>
           <h4>Пассажиры</h4>
         </div>
-        <button type="button" className="openBtn flex__center">-</button>
+        <button 
+          type="button" 
+          className="openBtn flex__center"
+          onClick={openWindow}>
+          {open ? "-" : "+"}
+          </button>
       </div>
-      <List className="passenger__desc">
+      <List className={`passenger__desc ${!open ? "minimized" : ""}`}>
         {passengers.map((item) => item.count > 0 && <PassengerString key={item.name} item={item}/>)}
       </List>
     </aside>
@@ -45,5 +57,8 @@ export default function PassengerInfo({ seats }) {
 }
 
 PassengerInfo.propTypes = {
-  seats: object,
+  seats: oneOfType([
+    arrayOf(object),
+    object,
+  ])
 }

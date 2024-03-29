@@ -1,9 +1,3 @@
-.train__final {
-  border: 1px solid #c4c4c4;
-  height: 355px;
-  background-color: #e4e0e9;
-}
-
 .all__passengers, .changeback, .passenger__info__wrapper {
   flex-direction: column;
 }

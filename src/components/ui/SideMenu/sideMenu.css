@@ -149,10 +149,15 @@ input:checked + .slider:before {
   height: 20px;
   font-size: 14px;
   padding: 0;
-  color: #E5E5E5;
   background-color: #3e3c41;
-  border: 1px solid #E5E5E5;
   border-radius: 5px;
+  color: #E5E5E5;
+  border: 1px solid #E5E5E5;
+}
+
+.openBtn:hover {
+  color: #fcdc9d;
+  border: 1px solid #fcdc9d;
 }
 
 .way__desc {

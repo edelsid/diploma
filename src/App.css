@@ -115,6 +115,10 @@ select {
   gap: 10px;
 }
 
+.arrow__to {
+  font-size: 34px;
+}
+
 /* Кнопки на белом фоне */
 
 .button, .button__transp, .onBlack__standart {

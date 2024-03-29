@@ -2,7 +2,15 @@
   display: grid;
   grid-template-columns: 195px 480px 285px;
   border: 1px solid #c4c4c4;
+}
+
+.train__main {
+  box-shadow: 0 4px 4px #00000040;
   margin-bottom: 45px;
+}
+
+.train__main:hover {
+  border: 1px solid #FFA800;
 }
 
 .price {
@@ -27,13 +35,7 @@
   gap: 7px;
 }
 
-.train {
-  box-shadow: 0 4px 4px #00000040;
-}
 
-.train:hover {
-  border: 1px solid #FFA800;
-}
 
 .train__type {
   width: 200px;
@@ -80,16 +82,15 @@
   justify-content: space-between;
 }
 
+.vagons {
+  margin: 0;
+}
+
 .vagon__desc {
   display: grid;
   grid-template-columns: 75px auto auto;
   line-height: 24px;
   gap: 18px;
-  margin-bottom: 35px;
-}
-
-.right {
-  align-self: flex-end;
   margin-bottom: 35px;
 }
 

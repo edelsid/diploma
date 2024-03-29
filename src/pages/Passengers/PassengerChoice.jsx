@@ -4,12 +4,13 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addPassenger } from "../../store/order";
 import { getYear } from "date-fns";
+import checkNames from "../../utils/checkNames";
 import { func, number, string } from "prop-types";
 
 export default function PassengerChoice({ id, num, deletePassenger }) {
-
   const dispatch = useDispatch();
   const currentDate = useSelector (state => state.root.site.date);
+  const [open, setOpen] = useState(true);
   const [error, setError] = useState({ message: "", cause: "" });
   const errLength = error.message.length;
   const [complete, setComplete] = useState(false);
@@ -22,7 +23,6 @@ export default function PassengerChoice({ id, num, deletePassenger }) {
   const { person, doc } = formData;
 
   const validateForm = (e) => {
-    console.log(formData)
     e.preventDefault();
     try {
       checkNames([person.surname, person.name, person.patronym]);
@@ -39,13 +39,6 @@ export default function PassengerChoice({ id, num, deletePassenger }) {
       if(complete) setComplete(false)
       console.log('form failed', error.cause);
     }
-  };
-
-  const checkNames = (names) => {
-    names.forEach(item => {
-      if (item.match(/^[А-Я][а-я]+$/g) === null)
-      throw new Error ("Имя, фамилия и отчество должны быть написаны на русском языке и начинаться с заглавной буквы", {cause: "name surname patronym"});
-    });
   };
 
   const checkDate = (birthdate) => {
@@ -84,36 +77,46 @@ export default function PassengerChoice({ id, num, deletePassenger }) {
     setError({ message: "", cause: "" });
   };
 
+  const openWindow = () => {
+    setOpen(!open);
+  }
+
   return (
     <form className="panel__wrapper psg" id={`totalPassengerForm${num}`} onSubmit={validateForm}>
       <div className="panel__standart border__btm flex__standart">
         <div className="flex__standart">
-          <button type="button" className="button__round flex__center">—</button>
+          <button 
+            type="button" 
+            className={`${open ? "button__round" : "button__round__orange"} flex__center`}
+            onClick={openWindow}>
+            {open ? "—" : "+"}
+          </button>
           <h4 className="medium">Пассажир {num}</h4>
         </div>
         <span onClick={() => deletePassenger(id)}>&#x2716;</span>
       </div>
-      <PassengerForm gatherData={gatherData} errorCause={error.cause}/>
-      <PassportForm gatherData={gatherData} errorCause={error.cause}/>
+      <div className={!open ? "minimized" : ""}>
+        <PassengerForm gatherData={gatherData} errorCause={error.cause}/>
+        <PassportForm gatherData={gatherData} errorCause={error.cause}/>
 
-      <div className={
-        `form__wrapper__standart ${errLength > 0 && "errorWindow"} ${complete && "completeWindow"} ${errLength > 0 || complete ? "flex__standart" : "flex__end"}`}>
+        <div className={`form__wrapper__standart ${errLength > 0 && "errorWindow"} ${complete && "completeWindow"} ${errLength > 0 || complete ? "flex__standart" : "flex__end"}`}>
 
-        {complete && <div className="popup__message flex__standart">
-          <span className="icon__complete flex__center px18">&#x2714;</span>
-          <p className="px14">Готово</p>
-        </div>}
+          {complete && <div className="popup__message flex__standart">
+            <span className="icon__complete flex__center px18">&#x2714;</span>
+            <p className="px14">Готово</p>
+          </div>}
 
-        {errLength > 0 && <div className="popup__message flex__standart">
-          <span className="icon__error flex__center px18" onClick={acceptError}>&#x2716;</span>
-          <p className="px14">{error.message}</p>
-        </div>}
+          {errLength > 0 && <div className="popup__message flex__standart">
+            <span className="icon__error flex__center px18" onClick={acceptError}>&#x2716;</span>
+            <p className="px14">{error.message}</p>
+          </div>}
 
-        {errLength === 0 && <button 
-          type="submit"
-          form={`totalPassengerForm${num}`}
-          className="button__transp compact narrow__black">Следующий пассажир
-        </button>}
+          {errLength === 0 && <button 
+            type="submit"
+            form={`totalPassengerForm${num}`}
+            className="button__transp compact narrow__black">Следующий пассажир
+          </button>}
+        </div>
       </div>
     </form>
   )}

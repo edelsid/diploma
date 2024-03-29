@@ -3,15 +3,15 @@ import List from "../../models/List";
 import Icon from "./Icon";
 import VagonType from "./VagonType";
 import reformatTime from "../../utils/reformatTime";
-import { object } from "prop-types";
+import { bool, object } from "prop-types";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addRoute } from "../../store/order"
 
-export default function Train({ item }) {
+export default function Train({ item, final }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const {arrival, departure } = item;
+  const { arrival, departure } = item;
   let arrivalTime;
   if (arrival) arrivalTime = reformatTime(arrival.duration);
   const departureTime = reformatTime(departure.duration);
@@ -31,12 +31,16 @@ export default function Train({ item }) {
   const chooseTrain = (e) => {
     e.preventDefault();
     dispatch(addRoute({item}));
-
     navigate(`/routes/${departure._id}/seats`);
-  }
+  };
+
+  const changeOptions = (e) => {
+    e.preventDefault();
+    console.log("goint back to route stage, clear all data. Probably need to save initial server request for routes and navigate there");
+  };
 
   return (
-    <li className="train">
+    <li className={`train ${!final ? "train__main" : ""}`}>
       <div className="train__type">
         <div className="train__icon flex__center"></div>
         <div className="direction__full">
@@ -54,10 +58,11 @@ export default function Train({ item }) {
         <List className="vagons">
           {Object.entries(departure.available_seats_info).map((item) => <VagonType key={item[0]} item={item} prices={departure.price_info}/>)}
         </List>
-        <List className="serviceList flex right">
+        <List className="serviceList flex__end">
           {services.map((item) => <Icon key={services.indexOf(item)} service={item} allServices={allServices}/>)}
         </List>
-        <button className="button narrow" onClick={chooseTrain}>Выбрать места</button>
+        {!final ? <button className="button narrow" onClick={chooseTrain}>Выбрать места</button> :
+        <button className="button__transp narrow__black" onClick={changeOptions}>Изменить</button>}
       </div>
     </li>
   )
@@ -65,4 +70,5 @@ export default function Train({ item }) {
 
 Train.propTypes = {
   item: object,
+  final: bool,
 }

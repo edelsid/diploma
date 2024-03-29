@@ -1,7 +1,26 @@
 import List from "../../models/List"
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux"
 
-export default function PaymentMethod() {
-  const paymentOptions = ['Банковской картой', 'PayPal', 'Visa QIWI Wallet'];
+export default function PaymentMethod({ gatherData }) {
+  const paymentOptions = useSelector(state => state.root.site.paymentOptions);
+  const [state, setState] = useState({
+    online: false,
+    cash: false,
+  });
+
+  const inputChange = (e) => {
+    const { id } = e.target;
+    setState ((prevForm) => ({
+      ...prevForm,
+      online: id === "online__payment" ? !state.online : false,
+      cash: id === "cash__payment" ? !state.cash : false,
+    }));
+  };
+
+  useEffect(() => {
+    gatherData(state, "payment");
+  }, [state]);
 
   return (
     <>
@@ -11,19 +30,29 @@ export default function PaymentMethod() {
         </div>
       </div>
       <div className="form__wrapper__standart online border__btm">
-        <form className="onlinePayment__form check">
+        <div className="onlinePayment__form check">
           <label className="form__label px18">
-            <input type="checkbox" className="checkmark" id="online__payment"></input>
+            <input 
+              type="checkbox" 
+              className={`checkmark ${state.online ? "checkmark__active flex__center": ""}`} 
+              id="online__payment"
+              onChange={inputChange}>
+            </input>
             Онлайн
           </label>
           <List className="onlinePayment__options flex">
             {paymentOptions.map((item) => <li key={paymentOptions.indexOf(item)} className="px16 bold">{item}</li>)}
           </List>
-        </form>
+        </div>
       </div>
       <div className="form__wrapper__standart cash check flex">
         <label className="form__label px18">
-          <input type="checkbox" className="checkmark" id="cash__payment"></input>
+          <input 
+            type="checkbox" 
+            className={`checkmark ${state.cash ? "checkmark__active flex__center": ""}`}
+            id="cash__payment"
+            onChange={inputChange}>
+          </input>
           Наличными
         </label>
       </div>

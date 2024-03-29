@@ -40,6 +40,6 @@ export default function SideMenu({ prices, route, seats, services }) {
 SideMenu.propTypes = {
   prices: arrayOf(number),
   route: object,
-  seats: arrayOf(object),
-  services: arrayOf(object),
+  seats: object,
+  services: object,
 }

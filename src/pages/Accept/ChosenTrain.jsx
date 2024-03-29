@@ -1,4 +1,6 @@
-export default function ChosenTrain() {
+import Train from "../../components/items/Train"
+
+export default function ChosenTrain({ route }) {
 
   return (
     <div className="panel__wrapper seat">
@@ -7,18 +9,7 @@ export default function ChosenTrain() {
           <h4 className="medium">Поезд</h4>
         </div>
       </div>
-      {/* <Train /> */}
-      <div className="train__final">
-        <div className="train__type">
-
-        </div>
-        <div className="directions">
-
-        </div>
-        <div className="vagonTypes flex">
-
-        </div>
-      </div>
+      <Train item={route} final={true}/>
     </div>
   )
 }

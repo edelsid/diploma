@@ -16,14 +16,26 @@
   user-select: none;
 }
 
-.button__round {
+.button__round, .button__round__orange {
   background-color: #ffffff00;
-  border: 1px solid #c4c4c4;
-  color: #c4c4c4;
   width: 30px;
   height: 30px;
   border-radius: 50%;
   margin-right: 20px;
+}
+
+.button__round {
+  border: 1px solid #c4c4c4;
+  color: #c4c4c4;
+} 
+
+.button__round__orange {
+  border: 1px solid #FFA800;
+  color: #FFA800;
+}
+
+.minimized {
+  display: none;
 }
 
 .passport__form__wrapper {

@@ -1,6 +1,7 @@
 import { func, string } from "prop-types";
 import List from "../../models/List";
 import { useState, useEffect } from "react";
+import composeClassName from "../../utils/composeClassName"
 
 export default function PassengerForm({ gatherData, errorCause }) {
   const ages = [{
@@ -58,12 +59,6 @@ export default function PassengerForm({ gatherData, errorCause }) {
     gatherData(state, "person");
   }, [state]);
 
-  const composeClassName = (id) => {
-    let className = "passenger__input";
-    if (errorCause.includes(id)) className = className + " incorrect";
-    return className;
-  }
-
   return (
     <div className="passenger__form__wrapper border__btm">
       <div className="passenger__form flex">
@@ -83,15 +78,15 @@ export default function PassengerForm({ gatherData, errorCause }) {
         <div className="flex__standart">
           <label className="form__label px18">
             Фамилия
-            <input className={composeClassName("surname")} id="surname" value={surname} onChange={inputChange} required></input>
+            <input className={composeClassName("surname", errorCause)} id="surname" value={surname} onChange={inputChange} required></input>
           </label>
           <label className="form__label px18">
             Имя
-            <input className={composeClassName("name")} id="name" value={name} onChange={inputChange} required></input>
+            <input className={composeClassName("name", errorCause)} id="name" value={name} onChange={inputChange} required></input>
           </label>
           <label className="form__label px18">
             Отчество
-            <input className={composeClassName("patronym")} id="patronym" value={patronym} onChange={inputChange} required></input>
+            <input className={composeClassName("patronym", errorCause)} id="patronym" value={patronym} onChange={inputChange} required></input>
           </label>
         </div>
         <div className="additions flex">
@@ -113,7 +108,7 @@ export default function PassengerForm({ gatherData, errorCause }) {
           <label className="form__label px18">
             Дата рождения
             <input 
-              className={composeClassName("birthdate")} 
+              className={composeClassName("birthdate", errorCause)} 
               id="birthdate"
               placeholder="ДД.ММ.ГГГГ" 
               maxLength="10"

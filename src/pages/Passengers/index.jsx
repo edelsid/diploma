@@ -4,9 +4,11 @@ import List from "../../models/List"
 import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { clearPassenger } from "../../store/order"
+import { useNavigate } from "react-router-dom"
 import "./passengers.css"
 
 export default function Passengers() {
+  const navigate = useNavigate();
   const [disabled, setDisabled] = useState(true);
   const route = useSelector(state => state.root.order.route);
   const passengers = useSelector(state => state.root.order.passengers);
@@ -24,8 +26,7 @@ export default function Passengers() {
   const forward = (e) => {
     e.preventDefault();
     if (!disabled) {
-      console.log(passengers);
-      console.log("i'm saving this and moving forward");
+      navigate("/payment");
     }
   };
 

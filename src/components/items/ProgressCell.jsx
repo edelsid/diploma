@@ -8,7 +8,7 @@ export default function ProgressCell({ item, phase, count, length }) {
   useEffect(() => {
     if (count === phase) setActive(true);
     if (count < phase) setPrevActive(true);
-  }, []);
+  }, [phase]);
 
   return (
     <div className="flex__end" style={{width: `calc(100% / ${length}`, backgroundColor: `${prevActive && '#FFA800'}`}}>

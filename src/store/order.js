@@ -1,7 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const route = localStorage.getItem('route') != null ? JSON.parse(localStorage.getItem('route')) : {};
+const seats_to = localStorage.getItem('seats_to') != null ? JSON.parse(localStorage.getItem('seats_to')) : [];
+const seats_back = localStorage.getItem('seats_back') != null ? JSON.parse(localStorage.getItem('seats_back')) : [];
+const services_to = localStorage.getItem('services_to') != null ? JSON.parse(localStorage.getItem('services_to')) : [];
+const services_back = localStorage.getItem('services_back') != null ? JSON.parse(localStorage.getItem('services_back')) : [];
+const passengers = localStorage.getItem('passengers') != null ? JSON.parse(localStorage.getItem('passengers')) : [];
+const payment = localStorage.getItem('payment') != null ? JSON.parse(localStorage.getItem('payment')) : {};
+
+const setStorage = (name, state) => {
+  localStorage.setItem(name, JSON.stringify(state));
+}
+
 const initialState = {
-  route: {},
+  route,
   seats: [{
     name: "Взрослых",
     codename: 'adult',
@@ -29,15 +41,15 @@ const initialState = {
     count: 0,
   }],
   places: {
-    to: [],
-    back: [],
+    to: seats_to,
+    back: seats_back,
   },
   services: {
-    to: [],
-    back: [],
+    to: services_to,
+    back: services_back,
   },
-  passengers: [],
-  payment: '',
+  passengers,
+  payment,
 };
 
 const order = createSlice({
@@ -46,6 +58,7 @@ const order = createSlice({
   reducers: {
     addRoute(state, action) {
       state.route = action.payload.item;
+      setStorage('route', state.route);
     },
     changeSeats(state, action) {
       const data = action.payload.data;
@@ -58,10 +71,12 @@ const order = createSlice({
           const index = state.places.back.indexOf(found);
           state.places.back.splice(index, 1);
           category.count -= 1;
+          setStorage('seats_back', state.places.back);
           return;
         } else {
           state.places.back.push(data);
           category.count += 1;
+          setStorage('seats_back', state.places.back);
           return;
         }
       }
@@ -72,10 +87,12 @@ const order = createSlice({
         const index = state.places.to.indexOf(found);
         state.places.to.splice(index, 1);
         category.count -= 1;
+        setStorage('seats_to', state.places.to);
         return;
       }
       state.places.to.push(data);
       category.count += 1;
+      setStorage('seats_to', state.places.to);
     },
     changeServices(state, action) {
       const service = action.payload.service;
@@ -85,9 +102,11 @@ const order = createSlice({
         if (found) {
           const index = state.services.back.indexOf(found);
           state.services.back.splice(index, 1);
+          setStorage('services_back', state.services.back);
           return;
         } else {
           state.services.back.push(service);
+          setStorage('services_back', state.services.back);
           return;
         }
       }
@@ -96,43 +115,76 @@ const order = createSlice({
       if (found) {
         const index = state.services.to.indexOf(found);
         state.services.to.splice(index, 1);
+        setStorage('services_to', state.services.to);
         return;
       }
       state.services.to.push(service);
+      setStorage('services_to', state.services.to);
     },
     addPassenger(state, action) {
       const found = state.passengers.find(e => e.id === action.payload.formData.id);
       if (!found) state.passengers.push(action.payload.formData);
+      setStorage('passengers', state.passengers);
     },
     clearPassenger(state, action) {
       state.passengers = state.passengers.filter((item) => item.id !== action.payload.id);
+      setStorage('passengers', state.passengers);
     },
-    clearAll: () => initialState,
+    clearAll() {
+      localStorage.clear();
+      return initialState;
+    },
     clearAllSeats(state) {
       state.seats.forEach((item) => item.count = 0);
       state.seatsBack.forEach((item) => item.count = 0);
       state.places = {
         to: [],
-        back: false,
+        back: [],
       };
       state.services = {
         to: [],
-        back: false,
+        back: [],
       };
+      localStorage.removeItem('seats_to');
+      localStorage.removeItem('seats_back');
+      localStorage.removeItem('services_to');
+      localStorage.removeItem('services_back');
     },
     clearPresentSeats(state, action) {
       if (action.payload.back) {
         state.seatsBack.forEach((item) => item.count = 0);
         state.places.back = [];
         state.services.back = [];
+        localStorage.removeItem('services_back');
+        localStorage.removeItem('seats_back');
         return;
       }
       state.seats.forEach((item) => item.count = 0);
       state.places.to = [];
       state.services.to = [];
-    }
+      localStorage.removeItem('services_to');
+      localStorage.removeItem('seats_to');
+    },
+    addPaymentInfo(state, action) {
+      state.payment = action.payload.formData;
+      setStorage('payment', state.payment);
+    },
+    clearPaymentInfo(state) {
+      state.payment = {};
+      localStorage.removeItem('payment');
+    },
   }
 });
 
-export const { addRoute, changeSeats, changeServices, clearAll, clearAllSeats, clearPresentSeats, addPassenger, clearPassenger } = order.actions;
+export const { 
+  addRoute, 
+  changeSeats, 
+  changeServices, 
+  clearAll, 
+  clearAllSeats, 
+  clearPresentSeats, 
+  addPassenger, 
+  clearPassenger, 
+  addPaymentInfo, 
+  clearPaymentInfo } = order.actions;
 export default order.reducer;

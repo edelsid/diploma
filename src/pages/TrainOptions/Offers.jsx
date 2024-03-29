@@ -5,7 +5,7 @@ import Train from "../../components/items/Train";
 
 export default function Offers({ data }) {
   if (data.items.length === 0) {
-    console.log ('nothing found')
+    console.log ('nothing found');
   } 
 
   return (

@@ -1,6 +1,6 @@
 import DataForm from "./DataForm"
 
-export default function PersonalData() {
+export default function PersonalData({ gatherData, errorCause }) {
   return (
     <>
       <div className="panel__standart border__btm flex__standart">
@@ -9,7 +9,7 @@ export default function PersonalData() {
         </div>
       </div>
       <div className="form__wrapper__standart border__btm">
-        <DataForm />
+        <DataForm gatherData={gatherData} errorCause={errorCause}/>
       </div>
     </>
   )

@@ -1,14 +1,14 @@
-import { element, object } from "prop-types";
+import { bool, element, object } from "prop-types";
 import reformatTime from "../../../utils/reformatTime";
 import Destination from "../../items/Destination"
 
-export default function WayDescription({ route, arrow, date, backDate }) {
+export default function WayDescription({ route, arrow, date, backDate, open }) {
   const { from, to, train, duration } = route;
   const rideDuration = reformatTime(duration);
   const { hh, min } = rideDuration;
 
   return (
-    <div className="way__desc">
+    <div className={`way__desc ${!open ? "minimized" : ""}`}>
       <div className="line flex__standart">
         <p className="px16">№ Поезда</p>
         <p className="bold">{train.name}</p>
@@ -38,4 +38,5 @@ WayDescription.propTypes = {
   arrow: element,
   date: object,
   backDate: object,
+  open: bool,
 }

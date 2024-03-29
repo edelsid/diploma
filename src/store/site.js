@@ -122,7 +122,25 @@ const site = createSlice({
       name: 'cond',
       displayName: 'Кондиционер',
       img: cond,
-    }]
+    }],
+    locTable: [{
+      count: 2,
+      loc: '/passengers',
+    }, {
+      count: 3,
+      loc: '/payment',
+    }, {
+      count: 4,
+      loc: '/accept',
+    }],
+    paymentOptions: ['Банковской картой', 'PayPal', 'Visa QIWI Wallet'],
+    ages: [{
+      id: "adult",
+      name: "Взрослый",
+    }, {
+      id: "child",
+      name: "Детский",
+    }],
   }
 });
 
