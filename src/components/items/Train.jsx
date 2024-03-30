@@ -44,6 +44,7 @@ export default function Train({ item, final }) {
       <div className="train__type">
         <div className="train__icon flex__center"></div>
         <div className="direction__full">
+          <h4 className="trainName">{departure.train.name}</h4>
           <p className="px16 capital">{departure.from.city.name} &rarr; {departure.to.city.name}</p>
         </div>
       </div>

@@ -1,14 +1,8 @@
 import { object } from "prop-types";
+import countSum from "../../../utils/countSum";
 
 export default function Total({ seats, services }) {
-  const getTotal = (sum, values) => {
-    Object.values(values).forEach((value) => {
-      value.forEach(item => sum = sum + item.cost);
-    });
-    return sum;
-  };
-
-  const totalSum = getTotal(0, seats) + getTotal(0, services);
+  const totalSum = countSum(seats) + countSum(services);
 
   return (
     <aside className="parameters parameters__total">

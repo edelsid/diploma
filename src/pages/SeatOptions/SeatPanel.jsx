@@ -59,7 +59,7 @@ export default function SeatPanel({ back, seats, route }) {
 
   return (
     <div className="panel__wrapper seat" id={back ? "back" : "to"}>
-      <div className={`seats__panel ${open && "border__btm"}`}>
+      <div className={`seats__panel`}>
         <div className="seats__panel__header flex">
           <button className="sign bold">{back ? <>&#129048;</> : <>&#129050;</>}</button>
           <button 
@@ -72,7 +72,12 @@ export default function SeatPanel({ back, seats, route }) {
         <div className="seat__types age">
           <h3>Количество билетов</h3>
           <List className="type__list flex">
-            {seatsByDirection.map((item) => <SeatType key={item.name} item={item} showSeats={showSeats}/>)}
+            {seatsByDirection.map((item) => <SeatType 
+              key={item.name} 
+              item={item} 
+              showSeats={showSeats} 
+              className={item.codename}
+              category={category}/>)}
           </List>
         </div>
       </div>

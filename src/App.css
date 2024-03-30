@@ -107,6 +107,7 @@ select {
 
 .serviceList {
   gap: 10px;
+  margin: 0;
 }
 
 .nameWrapper {

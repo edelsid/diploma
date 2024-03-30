@@ -14,8 +14,8 @@ export default function Footer() {
   }
 
   const toMain = () => {
+    navigate('/' + '/');
     dispatch(clearAll());
-    navigate('/');
     window.scrollTo(0, 0);
   }
 

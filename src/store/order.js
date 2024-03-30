@@ -1,5 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const generateID = (chars, length) => {
+  let result = "";
+  for (let i = 0; i < length; i++) {
+    result += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return result;
+};
+
 const route = localStorage.getItem('route') != null ? JSON.parse(localStorage.getItem('route')) : {};
 const seats_to = localStorage.getItem('seats_to') != null ? JSON.parse(localStorage.getItem('seats_to')) : [];
 const seats_back = localStorage.getItem('seats_back') != null ? JSON.parse(localStorage.getItem('seats_back')) : [];
@@ -7,12 +15,14 @@ const services_to = localStorage.getItem('services_to') != null ? JSON.parse(loc
 const services_back = localStorage.getItem('services_back') != null ? JSON.parse(localStorage.getItem('services_back')) : [];
 const passengers = localStorage.getItem('passengers') != null ? JSON.parse(localStorage.getItem('passengers')) : [];
 const payment = localStorage.getItem('payment') != null ? JSON.parse(localStorage.getItem('payment')) : {};
+const id = localStorage.getItem('id') != null ? JSON.parse(localStorage.getItem('id')) : ""
 
 const setStorage = (name, state) => {
   localStorage.setItem(name, JSON.stringify(state));
-}
+};
 
 const initialState = {
+  id,
   route,
   seats: [{
     name: "Взрослых",
@@ -58,7 +68,9 @@ const order = createSlice({
   reducers: {
     addRoute(state, action) {
       state.route = action.payload.item;
+      state.id = generateID("0123456789", 3)+generateID("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 2);
       setStorage('route', state.route);
+      setStorage('id', state.id);
     },
     changeSeats(state, action) {
       const data = action.payload.data;

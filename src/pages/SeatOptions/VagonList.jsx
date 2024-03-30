@@ -27,7 +27,6 @@ export default function VagonList({ seats, back, category }) {
       const serviceCosts = chosenServices.map((item) => item.cost);
       setSum((costs.reduce((a, b) => a + b, 0)) + (serviceCosts.reduce((a, b) => a + b, 0)));
     } else setSum(0);
-    console.log(sum)
   }, [seatsInfo, chosenServices]);
 
   return (

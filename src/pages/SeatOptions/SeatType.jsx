@@ -1,7 +1,14 @@
-import { func, object } from "prop-types";
+import { useState, useEffect } from "react";
+import { func, object, string } from "prop-types";
 
-export default function SeatType({ item, showSeats }) {
+export default function SeatType({ item, showSeats, className, category}) {
+  const [ active, setActive ] = useState(false);
   let text = '';
+
+  useEffect(() => {
+    if (className === category) setActive(true)
+    else setActive(false);
+  }, [category])
 
   //от чего это зависит?
   const texts = {
@@ -13,7 +20,7 @@ export default function SeatType({ item, showSeats }) {
   });
 
   return (
-    <div className="seat__type">
+    <div className={`seat__type ${active ? "seat__type__active" : ""}`}>
       <p className="seat__type__panel px16" onClick={() => showSeats(item.codename)}>
         {item.name} — {item.count}
       </p>
@@ -25,4 +32,6 @@ export default function SeatType({ item, showSeats }) {
 SeatType.propTypes = {
   item: object,
   showSeats: func,
+  className: string,
+  category: string,
 }

@@ -1,3 +1,4 @@
+import { object } from "prop-types"
 import Train from "../../components/items/Train"
 
 export default function ChosenTrain({ route }) {
@@ -12,4 +13,8 @@ export default function ChosenTrain({ route }) {
       <Train item={route} final={true}/>
     </div>
   )
+}
+
+ChosenTrain.propTypes = {
+  route: object,
 }

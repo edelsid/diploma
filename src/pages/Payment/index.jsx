@@ -18,16 +18,16 @@ export default function Payment() {
   const errLength = error.message.length;
   const [disabled, setDisabled] = useState(true);
   const [formData, setFormData] = useState({
-    person: {},
+    payer: {},
     payment: {},
   });
 
-  const { person, payment } = formData;
+  const { payer, payment } = formData;
 
   const gatherData = (data, label) => {
     setFormData((prevForm) => ({
       ...prevForm,
-      person: label === "person" ? data : prevForm.person,
+      payer: label === "payer" ? data : prevForm.payer,
       payment: label === "payment" ? data : prevForm.payment,
     }));
   };
@@ -42,9 +42,9 @@ export default function Payment() {
   const validateForm = (e) => {
     e.preventDefault();
     try {
-      checkNames([person.surname, person.name, person.patronym]);
-      checkPhone(person.phone);
-      checkEmail(person.email);
+      checkNames([payer.surname, payer.name, payer.patronym]);
+      checkPhone(payer.phone);
+      checkEmail(payer.email);
       console.log('form passed');
       dispatch(addPaymentInfo({formData}));
       navigate("/accept");

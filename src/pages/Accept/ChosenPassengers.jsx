@@ -1,15 +1,10 @@
+import { arrayOf, object } from "prop-types";
 import List from "../../models/List"
+import countSum from "../../utils/countSum";
 import Passenger from "./Passenger"
 
 export default function ChosenPassengers({ passengers, seats, services }) {
-  const getTotal = (sum, values) => {
-    Object.values(values).forEach((value) => {
-      value.forEach(item => sum = sum + item.cost);
-    });
-    return sum;
-  };
-
-  const totalSum = getTotal(0, seats) + getTotal(0, services);
+  const totalSum = countSum(seats) + countSum(services);
 
   const changeOptions = (e) => {
     e.preventDefault();
@@ -25,7 +20,7 @@ export default function ChosenPassengers({ passengers, seats, services }) {
       </div>
       <div className="overview flex">
         <List className="all__passengers flex">
-          {passengers.map((item) => <Passenger passenger={item}/>)}
+          {passengers.map((item) => <Passenger key={passengers.indexOf(item)} passenger={item}/>)}
         </List>
         <div className="changeback flex">
           <div className="totalsum price flex__standart">
@@ -40,4 +35,10 @@ export default function ChosenPassengers({ passengers, seats, services }) {
       </div>
     </div>
   )
+}
+
+ChosenPassengers.propTypes = {
+  passengers: arrayOf(object),
+  seats: object,
+  services: object,
 }

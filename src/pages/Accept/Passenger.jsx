@@ -1,6 +1,7 @@
 import personIcon from "../../assets/icons/person.png"
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
+import { object } from "prop-types";
 
 export default function Passenger({ passenger }) {
   const { person, doc } = passenger;
@@ -31,4 +32,8 @@ export default function Passenger({ passenger }) {
       </div>
     </li>
   )
+}
+
+Passenger.propTypes = {
+  passenger: object,
 }

@@ -40,10 +40,11 @@
 .seat__type {
   padding: 20px 33px;
   width: 33%;
+  border: 1px solid white;
 }
 
-.age {
-  margin-bottom: 45px;
+.seat__type__active {
+  border: 1px solid #FFA800;
 }
 
 .seat__type__panel {
@@ -65,6 +66,19 @@
 .type__icon {
   display: block;
   margin-bottom: 22px;
+  cursor: pointer;
+}
+
+.type__icon:hover {
+  filter: 
+    brightness(0) 
+    saturate(100%) 
+    invert(76%) 
+    sepia(29%) 
+    saturate(5633%) 
+    hue-rotate(357deg) 
+    brightness(101%) 
+    contrast(106%);
 }
 
 .btn__wrapper {

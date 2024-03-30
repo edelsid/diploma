@@ -1,3 +1,4 @@
+import { func } from "prop-types";
 import List from "../../models/List"
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux"
@@ -58,4 +59,8 @@ export default function PaymentMethod({ gatherData }) {
       </div>
     </>
   )
+}
+
+PaymentMethod.propTypes = {
+  gatherData: func,
 }

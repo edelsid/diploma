@@ -3,8 +3,11 @@ import worker from "../../assets/icons/worker.png"
 import pcTickets from "../../assets/icons/pc__ticket.png"
 import List from "../../models/List"
 import Step from "../../components/items/Step"
+import { object } from "prop-types"
 
-export default function ConfirmMessage() {
+export default function ConfirmMessage({ payer }) {
+  const { name, patronym } = payer;
+
   const steps = [{
     id: 1,
     text: "билеты будут отправлены на ваш e-mail",
@@ -25,7 +28,7 @@ export default function ConfirmMessage() {
         {steps.map((item) => <Step key={item.id} item={item}></Step>)}
       </List>
       <div className="thanks">
-        <h3>Ирина Эдуардовна!</h3>
+        <h3>{name} {patronym}!</h3>
         <p>
           Ваш заказ успешно оформлен.<br/>
           В ближайшее время с вами свяжется оператор связи для подтверждения
@@ -36,4 +39,8 @@ export default function ConfirmMessage() {
       </div>
     </div>
   )
+}
+
+ConfirmMessage.propTypes = {
+  payer: object,
 }

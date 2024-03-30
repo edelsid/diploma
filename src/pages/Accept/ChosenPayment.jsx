@@ -1,3 +1,4 @@
+import { object } from "prop-types";
 import { useState, useEffect } from "react"
 
 export default function ChosenPayment({ payment }) {
@@ -27,4 +28,8 @@ export default function ChosenPayment({ payment }) {
       </div>
     </div>
   )
+}
+
+ChosenPayment.propTypes = {
+  payment: object,
 }

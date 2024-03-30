@@ -3,7 +3,6 @@ import ProgressBar from "./ProgressBar";
 import { HeaderForm } from "./HeaderForm";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 import { clearAll } from "../../../store/order";
 import "./header.css"
 
@@ -16,8 +15,8 @@ export default function Header() {
   const path = location.pathname;
 
   const toMain = () => {
+    navigate('/' + '/');
     dispatch(clearAll());
-    navigate('/');
   }
 
   return (

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import composeClassName from "../../utils/composeClassName";
+import { func, string } from "prop-types";
 
 export default function DataForm({ gatherData, errorCause }) {
   const [state, setState] = useState({
@@ -25,7 +26,7 @@ export default function DataForm({ gatherData, errorCause }) {
   };
 
   useEffect(() => {
-    gatherData(state, "person");
+    gatherData(state, "payer");
   }, [state]);
 
   return (
@@ -88,4 +89,9 @@ export default function DataForm({ gatherData, errorCause }) {
       </div>
     </div>
   )
+}
+
+DataForm.propTypes = {
+  gatherData: func,
+  errorCause: string,
 }

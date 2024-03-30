@@ -1,3 +1,4 @@
+import { func, string } from "prop-types"
 import DataForm from "./DataForm"
 
 export default function PersonalData({ gatherData, errorCause }) {
@@ -13,4 +14,9 @@ export default function PersonalData({ gatherData, errorCause }) {
       </div>
     </>
   )
+}
+
+PersonalData.propTypes = {
+  gatherData: func,
+  errorCause: string,
 }

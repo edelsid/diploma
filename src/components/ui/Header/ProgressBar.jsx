@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 
-export default function ProgressBar({ }) {
+export default function ProgressBar() {
   const location = useLocation();
   const path = location.pathname;
   const locTable = useSelector(state => state.root.site.locTable);
