@@ -12,6 +12,10 @@ body {
   font-size: 24px;
 }
 
+#root {
+  position: relative;
+}
+
 section {
   margin: 0 258px;
 }
@@ -56,6 +60,7 @@ button {
   font-size: 24px;
   line-height: 24px;
   border-radius: 3px;
+  cursor: pointer;
 }
 
 input {
@@ -102,7 +107,7 @@ select {
 
 .table {
   justify-content: space-between;
-  margin-top: 95px;
+  padding-top: 95px;
 }
 
 .serviceList {
@@ -444,12 +449,16 @@ select {
   background-color: #b2f6a1;
 }
 
+.infoWindow {
+  background-color: #fcf9a1;
+}
+
 .popup__message {
   align-items: center;
   gap: 10px;
 }
 
-.icon__error, .icon__complete {
+.icon__error, .icon__complete, .icon__info {
   background-color: white;
   height: 35px;
   width: 35px;
@@ -465,6 +474,10 @@ select {
   color: #b2f6a1;
 }
 
+.icon__info {
+  color: #fcf9a1;
+}
+
 .incorrect {
   border: 1px solid #ff784c;
   color: #ff784c;
@@ -477,4 +490,53 @@ input:-webkit-autofill {
 input.incorrect:-webkit-autofill {
   -webkit-box-shadow: 0 0 0px 1000px white inset;
   -webkit-text-fill-color: #ff784c;
+}
+
+.noticeWrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;	
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 240px;
+}
+
+.noticeWrapper::before{
+  content: "";
+  background-color: #000000;
+  opacity: 0.3;    
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+}
+
+.notice_box {
+  width: 670px;	    
+  position: relative;
+  z-index: 2;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 5px #0000006b;
+  border: 1px solid #c4c4c4;
+}
+
+.notice_header, .notice_footer {
+  height: 110px;
+  padding: 35px;
+}
+
+.notice_body {
+  padding: 50px;
+}
+
+.msg_header {
+  margin-bottom: 35px;
 }

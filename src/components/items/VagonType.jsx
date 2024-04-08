@@ -11,7 +11,7 @@ export default function VagonType({ item, prices }) {
   };
   
   Object.entries(prices).forEach(([key, value]) => {
-    if (key === item[0]) price = value.bottom_price;
+    if (key === item[0]) price = value.top_price;
     if (key === item[0] && value.price) price = value.price;
   });
   Object.entries(names).forEach(([key, value]) => {

@@ -14,7 +14,7 @@ export default function DataForm({ gatherData, errorCause }) {
   const { name, surname, patronym, phone, email } = state;
 
   const inputChange = (e) => {
-    const {id, value} = e.target;
+    const { id, value } = e.target;
     setState ((prevForm) => ({
       ...prevForm,
       surname: id === "surname" ? value : prevForm.surname,

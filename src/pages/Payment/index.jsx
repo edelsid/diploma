@@ -6,6 +6,7 @@ import SideMenu from "../../components/ui/SideMenu/SideMenu"
 import PersonalData from "./PersonalData"
 import PaymentMethod from "./PaymentMethod"
 import checkNames from "../../utils/checkNames"
+import checkEmail from "../../utils/checkEmail"
 import "./payment.css"
 
 export default function Payment() {
@@ -45,24 +46,17 @@ export default function Payment() {
       checkNames([payer.surname, payer.name, payer.patronym]);
       checkPhone(payer.phone);
       checkEmail(payer.email);
-      console.log('form passed');
       dispatch(addPaymentInfo({formData}));
       navigate("/accept");
     } catch (error) {
       setError({ message: error.message, cause: error.cause });
-      console.log('form failed', error.cause);
     }
   };
 
   const checkPhone = (phone) => {
     const result = phone.match(/((\+7)|8)-[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}/g);
-    if (result === null) throw new Error ("Номер телефона введен некорректно. Пример: +7999-999-99-99", {cause: "phone"});
-  }
-
-  const checkEmail = (email) => {
-    const result = email.match(/[\w\d]+@\w+\.[a-z]+/g);
-    if (result === null) throw new Error ("Адрес электронной почты введен некорректно. Пример: demo@gmail.ru", {cause: "email"});
-  }
+    if (result === null) throw new Error ("Номер телефона введен некорректно. Пример: +7-999-999-99-99", {cause: "phone"});
+  };
 
   const acceptError = () => {
     setError({ message: "", cause: "" });

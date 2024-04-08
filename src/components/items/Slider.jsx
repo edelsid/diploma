@@ -9,7 +9,8 @@ export default function Slider({ id, min, max, step, value, handleChange, labels
 
   return (
     <>
-      <input type="range" 
+      <input 
+        type="range" 
         id={id}
         min={min} 
         max={max} 
@@ -31,7 +32,10 @@ Slider.propTypes = {
   min: number,
   max: number,
   step: number,
-  value: number,
+  value: oneOfType([
+    number,
+    string,
+  ]),
   handleChange: func,
   labels: oneOfType([
     arrayOf(number),

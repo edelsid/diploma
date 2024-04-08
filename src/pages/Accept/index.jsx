@@ -50,11 +50,9 @@ export default function Accept() {
 
   useEffect(() => {
     if (data && data.status) {
-      console.log(data);
-      console.log('order confirmed');
       navigate('/confirm');
     }
-  }, [data])
+  }, [data]);
 
   const countPassengers = (way) => {
     const result = [];

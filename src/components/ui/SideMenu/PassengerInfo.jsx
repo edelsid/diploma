@@ -22,9 +22,9 @@ export default function PassengerInfo({ seats }) {
     count: getCount("adult").length,
     price: getSum("adult"),
   }, {
-    name: "Дети",
-    count: getCount("child").length,
-    price: getSum("child"),
+    name: "Детских",
+    count: getCount("children").length,
+    price: getSum("children"),
   }, {
     name: `Дети "без места"`,
     count: getCount("noseat").length,

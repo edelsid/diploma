@@ -130,9 +130,81 @@ input:checked + .slider:before {
 
 .slider__large::-webkit-slider-thumb {
   width: 25px;
-  background-color: #FFA800;
+  background-color: #ffffff;
   cursor: pointer;
   border-radius: 50%;
+}
+
+.slider__multi {
+  position: relative;
+  margin: 7px 0;
+}
+
+.slider__multi__path {
+  position: relative;
+  z-index: 1;
+  height: 15px;
+  margin: 0 10px;
+}
+
+.slider__multi__path > .slider__track {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 10px;
+  background-color: #3e3c41;
+  border: 1px solid white;
+}
+
+.slider__multi__path > .slider__range {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  border-radius: 10px;
+  background-color: #FFA800;
+}
+
+.slider__multi__path > .thumb {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  bottom: 0;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: #ffffff;
+}
+
+.slider__multi__path > .thumb.left {
+  transform: translate(-15px, -5px);
+}
+
+.slider__multi__path > .thumb.right {
+  transform: translate(15px, -5px);
+}
+
+#input_left, #input_right {
+  position: absolute;
+  appearance: none;
+  z-index: 2;
+  pointer-events: none;
+  height: 15px;
+  width: 100%;
+  opacity: 0;
+}
+
+#input_left::-webkit-slider-thumb, #input_right::-webkit-slider-thumb {
+  appearance: none;
+  cursor: pointer;
+  pointer-events: all;
+  background-color: red;
+  width: 25px;
+  height: 25px;
 }
 
 .button__way {

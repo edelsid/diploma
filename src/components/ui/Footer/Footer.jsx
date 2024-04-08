@@ -1,10 +1,11 @@
 import Contacts from "./Contacts"
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { func } from "prop-types";
 import { clearAll } from "../../../store/order";
 import "./footer.css"
 
-export default function Footer() {
+export default function Footer({ callPopup }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -14,15 +15,16 @@ export default function Footer() {
   }
 
   const toMain = () => {
-    navigate('/' + '/');
     dispatch(clearAll());
+    navigate('/' + '/');
+    localStorage.clear();
     window.scrollTo(0, 0);
   }
 
   return (
     <footer>
       <div className="contactsWrapper">
-        <Contacts></Contacts>
+        <Contacts callPopup={callPopup}></Contacts>
       </div>
       <section className="footerPanel flex__standart">
         <p className="logo" onClick={toMain}>Лого</p>
@@ -31,4 +33,8 @@ export default function Footer() {
       </section>
     </footer>
   )
+}
+
+Footer.propTypes = {
+  callPopup: func,
 }

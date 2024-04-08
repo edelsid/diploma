@@ -31,18 +31,16 @@ export default function PassengerChoice({ id, num, deletePassenger }) {
         checkSeries(doc.series);
         checkNumber(doc.number);
       } else checkBirthCert(doc.number);
-      console.log('form passed');
       dispatch(addPassenger({formData}));
       setComplete(true);
     } catch (error) {
       setError({ message: error.message, cause: error.cause });
       if(complete) setComplete(false)
-      console.log('form failed', error.cause);
     }
   };
 
   const checkDate = (birthdate) => {
-    const err = new Error ("Дата рождения введена некорректно. Пример: 10.05.1992", {cause: "birthdate"});
+    const err = new Error ("Дата рождения введена некорректно! Пример: 10.05.1992", {cause: "birthdate"});
     const currentYear = getYear(new Date(currentDate));
     const dateArr = birthdate.split('.');
     if (Number(dateArr[0]) > 31 || dateArr[0] === "00") throw err;
@@ -52,17 +50,17 @@ export default function PassengerChoice({ id, num, deletePassenger }) {
 
   const checkSeries = (series) => {
     if (series.match(/[0-9]{4}/g) === null) 
-    throw new Error ("Серия паспорта введена некорректно. Пример: 1234", {cause: "series"});
+    throw new Error ("Серия паспорта введена некорректно! Пример: 1234", {cause: "series"});
   }
 
   const checkNumber = (number) => {
     if (number.match(/[0-9]{6}/g) === null) 
-    throw new Error ("Номер паспорта введен некорректно. Пример: 123456", {cause: "number"});
+    throw new Error ("Номер паспорта введен некорректно! Пример: 123456", {cause: "number"});
   }
 
   const checkBirthCert = (number) => {
     const result = number.match(/^(I|II|III|IV|V|VI|VII|VIII|IX|X)-[А-Я]{2}-[0-9]{6}$/g);
-    if (result === null) throw new Error ("Номер свидетельства о рождении введен некорректно. Пример: VI-МЯ-193452", {cause: "number"});
+    if (result === null) throw new Error ("Номер свидетельства о рождении введен некорректно! Пример: VI-МЯ-193452", {cause: "number"});
   }
 
   const gatherData = (data, label) => {

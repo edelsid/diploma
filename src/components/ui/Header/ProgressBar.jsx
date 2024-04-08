@@ -14,6 +14,7 @@ export default function ProgressBar() {
   useEffect(() => {
     locTable.forEach((item) => {
       if (item.loc === path) setPhase(item.count);
+      if (path === "/routes") setPhase(1);
     });
   }, [path]);
 
@@ -22,7 +23,7 @@ export default function ProgressBar() {
       <div className='progressCells flex'>
         <div className='margin' style={{backgroundColor: '#FFA800'}}></div>
         {menu.map((item) => <ProgressCell key={menu.indexOf(item)} item={item} phase={phase} count={menu.indexOf(item) + 1} length={menu.length}></ProgressCell>)}
-        <div className='margin' style={{backgroundColor: `${phase === menu.length && '#FFA800'}`}}></div>
+        <div className='margin' style={{backgroundColor: `${phase === menu.length ? '#FFA800' : ''}`}}></div>
       </div>
     </div>
   )

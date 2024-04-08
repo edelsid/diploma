@@ -1,20 +1,23 @@
-import { string } from "prop-types"
+import { func, string } from "prop-types"
 import { useState } from "react"
 import { useFetch } from "../../../hooks/useFetch";
 import { useNavigate, createSearchParams } from "react-router-dom";
-import Calendar from "./Calendar";
+import { useDispatch } from "react-redux";
+import { addSearchParams, clearAllPassengers, clearAllSeats, clearPaymentInfo } from "../../../store/order";
+import Calendar from "../Calendar";
 
-export function HeaderForm({ loc }) {
+export function HeaderForm({ loc, callPopup }) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const rawURL = import.meta.env.VITE_API_URL;
   const [adress, setAdress] = useState(`${rawURL}/routes/cities`);
   const cities = useFetch(adress);
   const [calendarTo, setCalendarTo] = useState(false);
   const [calendarBack, setCalendarBack] = useState(false);
-  const [inputFrom, setInputFrom] = useState({});
-  const [inputTo, setInputTo] = useState({});
-  const [departDate, setDepartDate] = useState({});
-  const [arriveDate, setArriveDate] = useState({});
+  const [inputFrom, setInputFrom] = useState({id: '', name: ''});
+  const [inputTo, setInputTo] = useState({id: '', name: ''});
+  const [departDate, setDepartDate] = useState({dateMillisec: 0, date: '', codedDate: ''});
+  const [arriveDate, setArriveDate] = useState({dateMillisec: 0, date: '', codedDate: ''});
   const [focusFrom, setFocusFrom] = useState(false);
   const [focusTo, setFocusTo] = useState(false);
 
@@ -26,7 +29,7 @@ export function HeaderForm({ loc }) {
         if (calendarTo) setCalendarTo(false);
         else {
           setCalendarTo(true);
-          setCalendarBack(false)
+          setCalendarBack(false);
         }
         break;
       }
@@ -58,11 +61,13 @@ export function HeaderForm({ loc }) {
   const submitForm = (e) => {
     e.preventDefault();
     if (arriveDate.dateMillisec < departDate.dateMillisec) {
-      alert ('Ошибка! Дата прибытия должна следовать за датой отправления');
+      callPopup({
+        type: "err",
+        message: 'Ошибка! Дата прибытия должна следовать за датой отправления.',
+      });
       return;
     }
-
-    navigate({
+    const searchParams = {
       pathname: '/routes',
       search: createSearchParams ({
         from_city_id: inputFrom.id,
@@ -70,11 +75,17 @@ export function HeaderForm({ loc }) {
         ...(departDate.codedDate && {date_start: departDate.codedDate}),
         ...(arriveDate.codedDate && {date_end: departDate.codedDate}),
       }).toString()
-    });
+    }
+
+    dispatch(addSearchParams(searchParams));
+    dispatch(clearPaymentInfo());
+    dispatch(clearAllPassengers());
+    dispatch(clearAllSeats());
+    navigate(searchParams);
   };
 
   const showDate = (dateMillisec, date, name, codedDate) => {
-    name === "depart" && 
+    name === "depart" &&
       setDepartDate({dateMillisec, date, codedDate});
       setCalendarTo(false);
     name === "arrive" &&
@@ -82,8 +93,20 @@ export function HeaderForm({ loc }) {
       setCalendarBack(false);
   };
 
-  //инпут врапперы вынести в отдельный компонент?
-  //выправить хук, чтобы не было 100500 запросов на сервер
+  const clearInput = (e) => {
+    e.target.id === "depart" && 
+      setDepartDate({dateMillisec: 0, date: '', codedDate: ''});
+    e.target.id === "arrive" &&
+      setArriveDate({dateMillisec: 0, date: '', codedDate: ''});
+  };
+
+  const revert = () => {
+    const from = inputFrom;
+    const to = inputTo;
+    setInputFrom(to);
+    setInputTo(from);
+  }
+
   return (
     <form onSubmit={submitForm} className={`headerForm flex__column ${loc === "/" ? "headerForm__normal" : "headerForm__slim"}`}>
       <div className={`forwWrapper ${loc === "/" ? "forwWrapper__normal" : "formWrapper__slim flex"}`}>
@@ -104,7 +127,7 @@ export function HeaderForm({ loc }) {
                 {cities.data.map((city) => <p className="city" key={city._id} onClick={() => fillFromList(city, "from")}>{city.name}</p>)}
               </div>}
             </div>
-            <span className="icon change"></span>
+            <span className="icon change" onClick={revert}></span>
             <div className="inputWrapper">
               <input
                 required={true}
@@ -128,22 +151,24 @@ export function HeaderForm({ loc }) {
               <input
                 className="input first" 
                 placeholder="ДД/ММ/ГГ" 
-                readOnly={true} 
+                readOnly 
                 onClick={showCalendar} 
                 name="depart"
                 value={departDate.date}>
               </input>
+              <span className="clearup__icon lightgrey" id="depart" onClick={clearInput}>&#10006;</span>
               {calendarTo && <Calendar chosenDate={departDate.dateMillisec} showDate={showDate} name="depart"/>}
             </div>
             <div className="inputWrapper">
               <input 
                 className="input second" 
                 placeholder="ДД/ММ/ГГ" 
-                readOnly={true} 
+                readOnly 
                 onClick={showCalendar} 
                 name="arrive"
                 value={arriveDate.date}>
               </input>
+              <span className="clearup__icon lightgrey" id="arrive" onClick={clearInput}>&#10006;</span>
               {calendarBack && <Calendar chosenDate={arriveDate.dateMillisec} showDate={showDate} name="arrive"/>}
             </div>
           </div>
@@ -156,4 +181,5 @@ export function HeaderForm({ loc }) {
 
 HeaderForm.propTypes = {
   loc: string,
+  callPopup: func,
 }

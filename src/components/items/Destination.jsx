@@ -1,4 +1,5 @@
 import { bool, object } from "prop-types";
+import stationCheck from "../../utils/stationName";
 
 export default function Destination({ item, side, right, date }) {
   const {city, railway_station_name } = item;
@@ -9,7 +10,7 @@ export default function Destination({ item, side, right, date }) {
       <p className="bold">{hh}:{min}</p>
       {side && <p className="px16 grey gap">{dd}.{mm}.{yy}</p>}
       <p className="px14 capital">{city.name}</p>
-      <p className="px14 grey">{railway_station_name + ' вокзал'}</p>
+      <p className="px14 grey">{stationCheck(city.name, railway_station_name)}</p>
     </div>
   )
 }

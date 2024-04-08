@@ -2,7 +2,7 @@ import { endOfMonth, startOfMonth, differenceInDays, subMonths, addMonths, forma
 import { ru } from "date-fns/locale";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import Cell from "../../items/Cell";
+import Cell from "../items/Cell";
 import { func, number, string } from "prop-types";
 
 export default function Calendar({ chosenDate, showDate, name }) {

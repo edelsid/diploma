@@ -60,3 +60,7 @@
   color: white;
   margin: 0;
 }
+
+.rating__symbols span {
+  cursor: pointer;
+}

@@ -1,4 +1,5 @@
 import { number, object, bool, string } from "prop-types";
+import nounCheck from "../../utils/nounCheck";
 import OverviewGrid from "./OverviewGrid"
 import SchemeGraphic from "./SchemeGraphic"
 
@@ -15,7 +16,7 @@ export default function VagonUnit({ vagon, choosingWithYou, back, category }) {
         <OverviewGrid vagon={vagon} back={back}/>
       </div>
       <div className="choosingWithYou px16 flex__end">
-        <p>{choosingWithYou} человек выбирают места в этом поезде</p>
+        <p>{choosingWithYou} {nounCheck("человек выбирает", choosingWithYou)} места в этом поезде</p>
       </div>
       <SchemeGraphic coach={coach} seats={seats} back={back} category={category}/>
     </>

@@ -94,6 +94,19 @@ header {
   border-radius: 3px;
 }
 
+.clearup__icon, .clearup__icon__side {
+  position: absolute;
+  right: 5%;
+}
+
+.clearup__icon {
+  top: 25%;
+}
+
+.clearup__icon__side {
+  top: 10%;
+}
+
 .change {
   width: 24px;
   height: 24px;

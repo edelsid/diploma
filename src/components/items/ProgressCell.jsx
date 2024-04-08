@@ -8,11 +8,13 @@ export default function ProgressCell({ item, phase, count, length }) {
   useEffect(() => {
     if (count === phase) setActive(true);
     if (count < phase) setPrevActive(true);
+    if (count > phase) setActive(false);
+    if (count > phase-1) setPrevActive(false);
   }, [phase]);
 
   return (
-    <div className="flex__end" style={{width: `calc(100% / ${length}`, backgroundColor: `${prevActive && '#FFA800'}`}}>
-      <div className="progressCell" style={{backgroundColor: `${active && '#FFA800'}`}}>
+    <div className={`flex__end ${active ? 'activecell' : ''}`} style={{width: `calc(100% / ${length}`, backgroundColor: `${prevActive ? '#FFA800' : ''}`}}>
+      <div className="progressCell" style={{backgroundColor: `${active ? '#FFA800' : ''}`}}>
       <div className="cellText flex">
         <div className="cellNumber flex__center">{count}</div>
         <p className="cellName">{item}</p>
@@ -20,7 +22,7 @@ export default function ProgressCell({ item, phase, count, length }) {
       </div>
       {count < length && 
       <div className="arrowWrapper">
-        <div className="progressArrow" style={{backgroundColor: `${active && '#FFA800'}`}}></div>
+        <div className="progressArrow" style={{backgroundColor: `${active ? '#FFA800' : ''}`}}></div>
       </div>}
     </div>
   )

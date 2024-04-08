@@ -1,7 +1,12 @@
 import { object } from "prop-types";
 import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { clearPaymentInfo } from "../../store/order";
 
 export default function ChosenPayment({ payment }) {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [method, setMethod] = useState("Онлайн");
 
   useEffect(() => {
@@ -10,7 +15,8 @@ export default function ChosenPayment({ payment }) {
 
   const changeOptions = (e) => {
     e.preventDefault();
-    console.log("goint back to payment stage, clear payment data");
+    dispatch(clearPaymentInfo());
+    navigate("/payment");
   };
 
   return (

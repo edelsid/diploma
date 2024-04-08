@@ -8,10 +8,13 @@ footer {
   border-bottom: 1px solid #E5E5E5;
 }
 
+.contactList li:not(:last-child) {
+  margin-bottom: 20px;
+}
+
 .contacts {
   padding: 50px 82px;
   justify-content: space-between;
-  line-height: 2.7rem;
 }
 
 .contactPanel {
@@ -19,7 +22,8 @@ footer {
 }
 
 .listItem::before {
-  vertical-align: -webkit-baseline-middle;;
+  display: block;
+  width: 30px;
   padding-right: 36px;
 }
 
@@ -63,6 +67,10 @@ footer {
 .subscribeList {
   margin-top: 25px;
   gap: 55px;
+}
+
+.footerIcon {
+  cursor: pointer;
 }
 
 .footerIcon:active {

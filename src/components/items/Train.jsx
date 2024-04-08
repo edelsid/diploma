@@ -6,11 +6,12 @@ import reformatTime from "../../utils/reformatTime";
 import { bool, object } from "prop-types";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { addRoute } from "../../store/order"
+import { addRoute, clearAllPassengers, clearAllSeats, clearPaymentInfo } from "../../store/order"
 
 export default function Train({ item, final }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const searchParams = useSelector(state => state.root.order.searchParams);
   const { arrival, departure } = item;
   let arrivalTime;
   if (arrival) arrivalTime = reformatTime(arrival.duration);
@@ -36,7 +37,11 @@ export default function Train({ item, final }) {
 
   const changeOptions = (e) => {
     e.preventDefault();
-    console.log("goint back to route stage, clear all data. Probably need to save initial server request for routes and navigate there");
+    dispatch(clearPaymentInfo());
+    dispatch(clearAllPassengers());
+    dispatch(clearAllSeats());
+    localStorage.clear();
+    navigate(searchParams);
   };
 
   return (
@@ -60,7 +65,7 @@ export default function Train({ item, final }) {
           {Object.entries(departure.available_seats_info).map((item) => <VagonType key={item[0]} item={item} prices={departure.price_info}/>)}
         </List>
         <List className="serviceList flex__end">
-          {services.map((item) => <Icon key={services.indexOf(item)} service={item} allServices={allServices}/>)}
+          {services.map((item) => <Icon key={item.name} service={item} allServices={allServices}/>)}
         </List>
         {!final ? <button className="button narrow" onClick={chooseTrain}>Выбрать места</button> :
         <button className="button__transp narrow__black" onClick={changeOptions}>Изменить</button>}

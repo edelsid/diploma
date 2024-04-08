@@ -1,8 +1,11 @@
 import { number } from "prop-types";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { changeType } from "../../store/site";
 import List from "../../models/List";
 
 export default function OffersHeader({ count }) {
+  const dispatch = useDispatch();
   const filters = [5, 10, 20];
   const types = [{
     id: "time",
@@ -13,7 +16,7 @@ export default function OffersHeader({ count }) {
   }, {
     id: "duration",
     name: "длительности",
-  }]
+  }];
 
   const [type, setType] = useState(types[0]);
   const [open, setOpen] = useState(false);
@@ -26,9 +29,12 @@ export default function OffersHeader({ count }) {
     setOpen(true);
   }
 
-  const changeType = (e) => {
+  const handleChange = (e) => {
     types.forEach((item) => {
-      if (item.id === e.target.id) setType(item);
+      if (item.id === e.target.id) {
+        setType(item);
+        dispatch(changeType(item.id));
+      }
     })
   };
 
@@ -40,7 +46,7 @@ export default function OffersHeader({ count }) {
           <div className="customSelect black" onClick={dropdown}>
             <p className="black">{type.name}</p>
             {open && <List className="customDropdown">
-              {types.map((item) => <li key={item.id} id={item.id} onClick={changeType}>{item.name}</li>)}
+              {types.map((item) => <li key={item.id} id={item.id} onClick={handleChange}>{item.name}</li>)}
             </List>} 
           </div>
         </label>

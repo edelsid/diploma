@@ -1,8 +1,11 @@
 import { object } from "prop-types";
+import { useMemo } from "react";
 import countSum from "../../../utils/countSum";
 
 export default function Total({ seats, services }) {
-  const totalSum = countSum(seats) + countSum(services);
+  const totalSum = useMemo(() => {
+    return countSum(seats) + countSum(services)
+  }, [seats, services]);
 
   return (
     <aside className="parameters parameters__total">

@@ -20,6 +20,7 @@ const site = createSlice({
   name: 'siteData',
   initialState: {
     date: Date.now(),
+    scrollHeight: 0,
     socials: [{
       name: 'yt', 
       img: yt,
@@ -58,16 +59,16 @@ const site = createSlice({
       tel: '8(800)000 00 00',
       mail: 'inbox@mail.ru',
       skype: 'tu.train.tickets',
-      adress: `г. Москва, ул. Московская 27-35 555 555`
+      adress: `г.\u00A0Москва, ул.\u00A0Московская 27-35 555\u00A0555`
     },
     pros: [
       {
         name: 'pc',
-        text: 'Удобный заказ на сайте'
+        text: 'Удобный заказ на\u00A0сайте'
       },
       {
         name: 'build',
-        text: 'Нет необходимости ехать в офис'
+        text: 'Нет необходимости ехать в\u00A0офис'
       },
       {
         name: 'web',
@@ -77,12 +78,12 @@ const site = createSlice({
     feedback: [
       {
         name: 'Екатерина Вальнова',
-        text: 'Доброжелательные подсказки на всех этапах помогут правильно заполнить поля и без затруднений купить авиа или ж/д билет, даже если вы заказываете онлайн билет впервые.',
+        text: 'Доброжелательные подсказки на\u00A0всех этапах помогут правильно заполнить поля и\u00A0без\u00A0затруднений купить авиа или\u00A0ж/д билет, даже если вы заказываете онлайн билет впервые.',
         portrait: ekat,
       },
       {
         name: 'Евгений Стрыкало',
-        text: 'СМС-сопровождение до посадки. Сразу после оплаты ж/д билетов и за 3 часа до отправления мы пришлем вам СМС-напоминание о поездке.',
+        text: 'СМС-сопровождение до\u00A0посадки. Сразу после оплаты ж/д билетов и\u00A0за\u00A03\u00A0часа до\u00A0отправления мы пришлем вам СМС-напоминание о поездке.',
         portrait: evg,
       },
     ],
@@ -141,7 +142,46 @@ const site = createSlice({
       id: "child",
       name: "Детский",
     }],
-  }
+    filters: [],
+    priceRange: {
+      min: 0,
+      max: 0,
+    },
+    timeRange: {
+      from: 0,
+      to: 24,
+    },
+    timeRangeBack: {
+      from: 0,
+      to: 24,
+    },
+    type: "time",
+  },
+  reducers: {
+    changeFilters(state, action) {
+      const found = state.filters.find(e => e === action.payload);
+      if (found) {
+        const index = state.filters.indexOf(found);
+        state.filters.splice(index, 1);
+        return;
+      }
+      state.filters.push(action.payload);
+    },
+    changePriceRange(state, action) {
+      state.priceRange = action.payload;
+    },
+    changeTimeRange(state, action) {
+      if (action.payload.back) {
+        state.timeRangeBack = action.payload.range;
+        return;
+      }
+      state.timeRange = action.payload.range;
+    },
+    changeType(state, action) {
+      state.type = action.payload;
+    }
+  },
 });
 
+export const { changeFilters, changePriceRange, changeTimeRange, changeType } = site.actions;
 export default site.reducer;

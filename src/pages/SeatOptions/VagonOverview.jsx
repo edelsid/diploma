@@ -1,12 +1,9 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { clearPresentSeats } from "../../store/order";
 import List from "../../models/List";
 import VagonList from "./VagonList";
 import { arrayOf, object, bool, string } from "prop-types";
 
 export default function VagonOverview({ vagonTypes, seats, back, category }) {
-  const dispatch = useDispatch()
   const [vagonOpen, setVagonOpen] = useState(false);
   const [vagonType, setVagonType] = useState('');
 
@@ -14,7 +11,6 @@ export default function VagonOverview({ vagonTypes, seats, back, category }) {
     if (vagonOpen) {
       setVagonOpen(false);
       setVagonType('');
-      dispatch(clearPresentSeats({back}));
       return;
     }
     setVagonOpen(true);

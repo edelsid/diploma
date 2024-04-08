@@ -1,5 +1,6 @@
 import { object } from "prop-types";
 import { useSelector } from "react-redux";
+import stationCheck from "../../utils/stationName";
 import Div from "../../models/Div";
 import Icon from "./Icon";
 
@@ -17,15 +18,6 @@ export default function LatestRide({ item }) {
     name: "cond",
     status: departure.have_air_conditioning,
   }];
-
-  //проверка названия станции
-  const stationCheck = (cityName, stationName) => {
-    const capitalizedNAme = cityName[0].toUpperCase() + cityName.substring(1);
-    if (capitalizedNAme !== stationName) {
-      return stationName = stationName + " вокзал";
-    }
-    return stationName;
-  }
 
   return (
     <li className="ticket">

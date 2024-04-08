@@ -8,9 +8,9 @@ import Services from "./Services"
 import Price from "./Price"
 import RideTime from "./RideTime"
 import "./sideMenu.css"
-import { arrayOf, number, object } from "prop-types"
+import { arrayOf, number, object, bool } from "prop-types"
 
-export default function SideMenu({ prices, route, seats, services }) {
+export default function SideMenu({ prices, route, seats, services, back }) {
   const location = useLocation();
 
   return (
@@ -31,7 +31,7 @@ export default function SideMenu({ prices, route, seats, services }) {
         <Services />
         <Price prices={prices}/>
         <RideTime name={'Туда'} arrow={<>&#129050;</>}/>
-        <RideTime name={'Обратно'} arrow={<>&#129048;</>}/>
+        {back && <RideTime name={'Обратно'} arrow={<>&#129048;</>} back={back}/>}
       </>}
     </>
   )
@@ -42,4 +42,5 @@ SideMenu.propTypes = {
   route: object,
   seats: object,
   services: object,
+  back: bool,
 }

@@ -1,14 +1,24 @@
 import { arrayOf, object } from "prop-types";
+import { useMemo } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { clearAllPassengers, clearPaymentInfo } from "../../store/order";
 import List from "../../models/List"
 import countSum from "../../utils/countSum";
 import Passenger from "./Passenger"
 
 export default function ChosenPassengers({ passengers, seats, services }) {
-  const totalSum = countSum(seats) + countSum(services);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const totalSum = useMemo(() => {
+    return countSum(seats) + countSum(services)
+  }, [seats, services]);
 
   const changeOptions = (e) => {
     e.preventDefault();
-    console.log("goint back to passenger stage, clear passenger and payment data");
+    dispatch(clearPaymentInfo());
+    dispatch(clearAllPassengers());
+    navigate("/passengers");
   };
 
   return (

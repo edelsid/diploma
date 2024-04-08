@@ -8,6 +8,7 @@ const generateID = (chars, length) => {
   return result;
 };
 
+const searchParams = localStorage.getItem('searchParams') != null ? JSON.parse(localStorage.getItem('searchParams')) : {};
 const route = localStorage.getItem('route') != null ? JSON.parse(localStorage.getItem('route')) : {};
 const seats_to = localStorage.getItem('seats_to') != null ? JSON.parse(localStorage.getItem('seats_to')) : [];
 const seats_back = localStorage.getItem('seats_back') != null ? JSON.parse(localStorage.getItem('seats_back')) : [];
@@ -23,6 +24,7 @@ const setStorage = (name, state) => {
 
 const initialState = {
   id,
+  searchParams,
   route,
   seats: [{
     name: "Взрослых",
@@ -66,6 +68,10 @@ const order = createSlice({
   name: 'orderData',
   initialState,
   reducers: {
+    addSearchParams(state, action) {
+      state.searchParams = action.payload;
+      setStorage('searchParams', state.searchParams);
+    },
     addRoute(state, action) {
       state.route = action.payload.item;
       state.id = generateID("0123456789", 3)+generateID("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 2);
@@ -142,10 +148,11 @@ const order = createSlice({
       state.passengers = state.passengers.filter((item) => item.id !== action.payload.id);
       setStorage('passengers', state.passengers);
     },
-    clearAll() {
-      localStorage.clear();
-      return initialState;
+    clearAllPassengers(state) {
+      state.passengers = [];
+      localStorage.removeItem('passengers');
     },
+    clearAll() {return initialState},
     clearAllSeats(state) {
       state.seats.forEach((item) => item.count = 0);
       state.seatsBack.forEach((item) => item.count = 0);
@@ -162,21 +169,6 @@ const order = createSlice({
       localStorage.removeItem('services_to');
       localStorage.removeItem('services_back');
     },
-    clearPresentSeats(state, action) {
-      if (action.payload.back) {
-        state.seatsBack.forEach((item) => item.count = 0);
-        state.places.back = [];
-        state.services.back = [];
-        localStorage.removeItem('services_back');
-        localStorage.removeItem('seats_back');
-        return;
-      }
-      state.seats.forEach((item) => item.count = 0);
-      state.places.to = [];
-      state.services.to = [];
-      localStorage.removeItem('services_to');
-      localStorage.removeItem('seats_to');
-    },
     addPaymentInfo(state, action) {
       state.payment = action.payload.formData;
       setStorage('payment', state.payment);
@@ -188,15 +180,16 @@ const order = createSlice({
   }
 });
 
-export const { 
+export const {
+  addSearchParams,
   addRoute, 
   changeSeats, 
   changeServices, 
   clearAll, 
-  clearAllSeats, 
-  clearPresentSeats, 
+  clearAllSeats,
   addPassenger, 
-  clearPassenger, 
+  clearPassenger,
+  clearAllPassengers,
   addPaymentInfo, 
   clearPaymentInfo } = order.actions;
 export default order.reducer;
