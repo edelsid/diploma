@@ -119,7 +119,7 @@ export default function PassengerForm({ gatherData, errorCause }) {
           </label>
         </div>
         <div className="disability check">
-          <label className="form__label px18">
+          <label className={`form__label px18 ${state.disabled && "orange"}`}>
             <input 
               type="checkbox" 
               className={`checkmark ${state.disabled && "checkmark__active flex__center"}`} 

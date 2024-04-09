@@ -32,7 +32,7 @@ export default function PaymentMethod({ gatherData }) {
       </div>
       <div className="form__wrapper__standart online border__btm">
         <div className="onlinePayment__form check">
-          <label className="form__label px18">
+          <label className={`form__label px18 ${state.online && "orange"}`}>
             <input 
               type="checkbox" 
               className={`checkmark ${state.online ? "checkmark__active flex__center": ""}`} 
@@ -47,7 +47,7 @@ export default function PaymentMethod({ gatherData }) {
         </div>
       </div>
       <div className="form__wrapper__standart cash check flex">
-        <label className="form__label px18">
+        <label className={`form__label px18 ${state.cash && "orange"}`}>
           <input 
             type="checkbox" 
             className={`checkmark ${state.cash ? "checkmark__active flex__center": ""}`}
